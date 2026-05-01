@@ -9,7 +9,7 @@ public class CharacterState : MonoBehaviour
     [SerializeField] private bool _sphereMode;
 
     private List<IOperatingMode> _stateMods = new List<IOperatingMode>();
-    private bool _isShpereMode;
+    private bool _isShpereMode = true;
 
 
     private void Start()

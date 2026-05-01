@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IModuleAbility 
 {
-    public void Interact();
+    public void Interact(bool isActivate);
 }

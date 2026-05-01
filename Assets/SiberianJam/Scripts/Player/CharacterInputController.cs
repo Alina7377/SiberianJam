@@ -17,14 +17,15 @@ public class CharacterInputController : MonoBehaviour
         _inputControl = new PlayerController();
         _inputControl.Gamplay.ChangeMode.started += context => ChangeMode();
         _inputControl.Gamplay.Interact.started += context => Interact();
-        _inputControl.Gamplay.Interact.canceled += context => Interact();
+        _inputControl.Gamplay.Interact.canceled += context => EndInteract();
         _inputControl.Gamplay.ChangeModul.started += context => ChangeModule();
         if (_interactAbilitys.Count > 0)
             _activeModule = _interactAbilitys[_activeAbylityNum];
     }
 
     private void ChangeModule()
-    {        
+    {
+        EndInteract();
         if (_stateCharacter.IsShpereMode) return;
         if (_interactAbilitys.Count == 0) return;
         Debug.Log("Переклчюение режима");
@@ -40,11 +41,18 @@ public class CharacterInputController : MonoBehaviour
         if (_stateCharacter.IsShpereMode) return;
 
         if (_activeModule is IModuleAbility ability)
-            ability.Interact();
+            ability.Interact(true);
+    }
+
+    private void EndInteract()
+    {
+        if (_activeModule is IModuleAbility ability)
+            ability.Interact(false);
     }
 
     private void ChangeMode()
     {
+        EndInteract();
         _stateCharacter.ChangeState();
     }
 
