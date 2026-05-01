@@ -5,6 +5,7 @@ public class RobotMode : MonoBehaviour, IOperatingMode
     [SerializeField] private float _speed;
     [SerializeField] private float _speedRotation;
     [SerializeField] private GameObject _visualmodel;
+    [SerializeField] private float _gravityForce;
 
     private CharacterController _characterController;
     private Camera _camera;
@@ -29,7 +30,7 @@ public class RobotMode : MonoBehaviour, IOperatingMode
 
          _animationManager.AnimatorSetParameter("Horizontal", animatePos.x);
          _animationManager.AnimatorSetParameter("Vertical", animatePos.z);*/
-
+        pos += new Vector3(0, _gravityForce * Time.deltaTime, 0);
         _characterController.Move(pos);
     }
 

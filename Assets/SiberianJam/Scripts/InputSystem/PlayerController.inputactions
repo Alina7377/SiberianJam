@@ -7,7 +7,7 @@
             "id": "97983c52-5ea2-407c-8ef3-dc1d31eb8b82",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "MovementStandart",
                     "type": "Value",
                     "id": "3f80f297-d21c-404e-bb81-27e2dfd9dc43",
                     "expectedControlType": "Vector2",
@@ -41,6 +41,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MovementSphere",
+                    "type": "Value",
+                    "id": "20fb494e-873a-4e94-b65b-ca42aae1591a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ChangeModul",
+                    "type": "Button",
+                    "id": "610356aa-10c9-4091-bcec-54400012090c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -51,7 +69,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MovementStandart",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -62,7 +80,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MovementStandart",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -73,7 +91,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MovementStandart",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -84,7 +102,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MovementStandart",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -95,7 +113,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MovementStandart",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -113,7 +131,7 @@
                 {
                     "name": "",
                     "id": "dd80e548-a80b-48db-af34-de4bd394f113",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -140,6 +158,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "34f9c0d0-529c-4fb3-b7b5-ec02b6de036c",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementSphere",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "3a47bd18-0679-4bd7-84df-280012c5a413",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementSphere",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "8ec1dcbc-7f4b-49d1-8ba4-d7f7087f424a",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementSphere",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "5395bf5e-10cf-418c-8f59-cd24f5accaaa",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeModul",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -6,10 +6,10 @@ public class CharacterState : MonoBehaviour
     [SerializeField] private CharacterController _characterControler;
     [SerializeField] private Camera _camera;
     [SerializeField] private List<MonoBehaviour> _statesScripts;
-    [SerializeField] private int _startState = 0;
+    [SerializeField] private bool _sphereMode;
 
     private List<IOperatingMode> _stateMods = new List<IOperatingMode>();
-    private int _currentState;
+    private bool _isShpereMode;
 
 
     private void Start()
@@ -23,35 +23,53 @@ public class CharacterState : MonoBehaviour
                 _stateMods.Add(mode);
             }
         }
-        _currentState = _startState;
+        _isShpereMode = _sphereMode;
     }
 
     public void Movement(Vector2 direction)
     {
-        if (_currentState >= 0 && _currentState < _stateMods.Count)
-            _stateMods[_currentState].Move(direction);
+        if (!_isShpereMode && _stateMods.Count > 1)
+            _stateMods[1].Move(direction);
         else
         {
-            Debug.Log("Некорректен режим работы робота");
+            if (_stateMods.Count <= 1)
+                Debug.Log("Некорректен режим работы робота");
         }
     }
+    public void MovementShpere(Vector2 direction) 
+    {
+        if(_isShpereMode && _stateMods.Count > 0)
+            _stateMods[0].Move(direction);
+        else
+        {
+            if ( _stateMods.Count == 0)
+                Debug.Log("Некорректен режим работы робота");
+        }
+    } 
 
     public void Rotation(Vector2 look)
     {
-        if (_currentState >= 0 && _currentState < _stateMods.Count)
-            _stateMods[_currentState].Rotate(look);
+        if (_isShpereMode)
+            _stateMods[0].Rotate(look);
         else
         {
-            Debug.Log("Некорректен режим работы робота");
+            _stateMods[1].Rotate(look);
         }
     }
 
     public void ChangeState()
     {
-        _stateMods[_currentState].Activity(false);
-        _currentState++;
-        if (_currentState >= _stateMods.Count)
-            _currentState = 0;
-        _stateMods[_currentState].Activity(true);
+        if(_isShpereMode)
+            _stateMods[0].Activity(false);
+        else
+            _stateMods[1].Activity(false);
+        _isShpereMode = !_isShpereMode;
+        if (_isShpereMode)
+            _stateMods[0].Activity(true);
+        else
+            _stateMods[1].Activity(true);
     }
+
+    public bool IsShpereMode { get => _isShpereMode; }
+
 }
