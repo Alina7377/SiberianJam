@@ -1,5 +1,12 @@
+using UnityEngine;
 
-public interface IDragObject 
+public interface IInteractObject 
 {
-    public void Interact();
+    public ETypeObject GetObjectType { get; }
+}
+
+public enum ETypeObject
+{
+    Drag,
+    Push
 }

@@ -40,19 +40,17 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
             _isDrag = false;
             return;
         }
-
         if (_dragObject.TryGetComponent<IDragObject>(out IDragObject interactObject))
             interactObject.Interact();
-
         _dragObject.transform.SetParent(null);
         _dragObject = null;
         _isDrag = false;
 
     }
 
-    public void Interact()
+    public void Interact(bool isActive)
     {
-        if (_isDrag)
+        if (!isActive)
             DropObject();
         else
             DragObgect();

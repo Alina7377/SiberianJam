@@ -66,16 +66,21 @@
     <Compile Include="Assets\SiberianJam\Scripts\InputSystem\PlayerController.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\States\DraggingAbility.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\States\IModuleAbility.cs" />
+    <Compile Include="Assets\SiberianJam\Scripts\Lampa.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\States\RobotMode.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\CharacterState.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\States\PushingAbility.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\InteractebleObjects\IPushObject.cs" />
+    <Compile Include="Assets\SiberianJam\Scripts\Door.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\States\SphereMode.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\InteractebleObjects\DraggingObject.cs" />
+    <Compile Include="Assets\SiberianJam\Scripts\ActivationPlatform.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\CharacterInputController.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\InteractebleObjects\IInteractObject.cs" />
+    <Compile Include="Assets\SiberianJam\Scripts\IActivate.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\CameraFolow.cs" />
+    <Compile Include="Assets\SiberianJam\Scripts\InteractebleObjects\IIDragObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

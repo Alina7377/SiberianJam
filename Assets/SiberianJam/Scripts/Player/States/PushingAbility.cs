@@ -10,9 +10,9 @@ public class PushingAbility : MonoBehaviour, IModuleAbility
 
     private bool _isPusshing = false;
 
-    public void Interact()
+    public void Interact(bool active)
     {
-        _isPusshing = !_isPusshing;
+        _isPusshing = active;
     }
 
     private void FixedUpdate()
