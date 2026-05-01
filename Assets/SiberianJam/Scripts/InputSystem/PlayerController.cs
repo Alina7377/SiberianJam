@@ -93,7 +93,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             ""id"": ""97983c52-5ea2-407c-8ef3-dc1d31eb8b82"",
             ""actions"": [
                 {
-                    ""name"": ""Movement"",
+                    ""name"": ""MovementStandart"",
                     ""type"": ""Value"",
                     ""id"": ""3f80f297-d21c-404e-bb81-27e2dfd9dc43"",
                     ""expectedControlType"": ""Vector2"",
@@ -127,6 +127,24 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MovementSphere"",
+                    ""type"": ""Value"",
+                    ""id"": ""20fb494e-873a-4e94-b65b-ca42aae1591a"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChangeModul"",
+                    ""type"": ""Button"",
+                    ""id"": ""610356aa-10c9-4091-bcec-54400012090c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -137,7 +155,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""MovementStandart"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -148,7 +166,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""MovementStandart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -159,7 +177,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""MovementStandart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -170,7 +188,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""MovementStandart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -181,7 +199,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""MovementStandart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -199,7 +217,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""dd80e548-a80b-48db-af34-de4bd394f113"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -228,6 +246,50 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""34f9c0d0-529c-4fb3-b7b5-ec02b6de036c"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementSphere"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""3a47bd18-0679-4bd7-84df-280012c5a413"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementSphere"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""8ec1dcbc-7f4b-49d1-8ba4-d7f7087f424a"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementSphere"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5395bf5e-10cf-418c-8f59-cd24f5accaaa"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeModul"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -236,10 +298,12 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
 }");
         // Gamplay
         m_Gamplay = asset.FindActionMap("Gamplay", throwIfNotFound: true);
-        m_Gamplay_Movement = m_Gamplay.FindAction("Movement", throwIfNotFound: true);
+        m_Gamplay_MovementStandart = m_Gamplay.FindAction("MovementStandart", throwIfNotFound: true);
         m_Gamplay_Look = m_Gamplay.FindAction("Look", throwIfNotFound: true);
         m_Gamplay_ChangeMode = m_Gamplay.FindAction("ChangeMode", throwIfNotFound: true);
         m_Gamplay_Interact = m_Gamplay.FindAction("Interact", throwIfNotFound: true);
+        m_Gamplay_MovementSphere = m_Gamplay.FindAction("MovementSphere", throwIfNotFound: true);
+        m_Gamplay_ChangeModul = m_Gamplay.FindAction("ChangeModul", throwIfNotFound: true);
     }
 
     ~@PlayerController()
@@ -320,10 +384,12 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
     // Gamplay
     private readonly InputActionMap m_Gamplay;
     private List<IGamplayActions> m_GamplayActionsCallbackInterfaces = new List<IGamplayActions>();
-    private readonly InputAction m_Gamplay_Movement;
+    private readonly InputAction m_Gamplay_MovementStandart;
     private readonly InputAction m_Gamplay_Look;
     private readonly InputAction m_Gamplay_ChangeMode;
     private readonly InputAction m_Gamplay_Interact;
+    private readonly InputAction m_Gamplay_MovementSphere;
+    private readonly InputAction m_Gamplay_ChangeModul;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gamplay".
     /// </summary>
@@ -336,9 +402,9 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         /// </summary>
         public GamplayActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Gamplay/Movement".
+        /// Provides access to the underlying input action "Gamplay/MovementStandart".
         /// </summary>
-        public InputAction @Movement => m_Wrapper.m_Gamplay_Movement;
+        public InputAction @MovementStandart => m_Wrapper.m_Gamplay_MovementStandart;
         /// <summary>
         /// Provides access to the underlying input action "Gamplay/Look".
         /// </summary>
@@ -351,6 +417,14 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gamplay/Interact".
         /// </summary>
         public InputAction @Interact => m_Wrapper.m_Gamplay_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "Gamplay/MovementSphere".
+        /// </summary>
+        public InputAction @MovementSphere => m_Wrapper.m_Gamplay_MovementSphere;
+        /// <summary>
+        /// Provides access to the underlying input action "Gamplay/ChangeModul".
+        /// </summary>
+        public InputAction @ChangeModul => m_Wrapper.m_Gamplay_ChangeModul;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -377,9 +451,9 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_GamplayActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_GamplayActionsCallbackInterfaces.Add(instance);
-            @Movement.started += instance.OnMovement;
-            @Movement.performed += instance.OnMovement;
-            @Movement.canceled += instance.OnMovement;
+            @MovementStandart.started += instance.OnMovementStandart;
+            @MovementStandart.performed += instance.OnMovementStandart;
+            @MovementStandart.canceled += instance.OnMovementStandart;
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
@@ -389,6 +463,12 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @MovementSphere.started += instance.OnMovementSphere;
+            @MovementSphere.performed += instance.OnMovementSphere;
+            @MovementSphere.canceled += instance.OnMovementSphere;
+            @ChangeModul.started += instance.OnChangeModul;
+            @ChangeModul.performed += instance.OnChangeModul;
+            @ChangeModul.canceled += instance.OnChangeModul;
         }
 
         /// <summary>
@@ -400,9 +480,9 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         /// <seealso cref="GamplayActions" />
         private void UnregisterCallbacks(IGamplayActions instance)
         {
-            @Movement.started -= instance.OnMovement;
-            @Movement.performed -= instance.OnMovement;
-            @Movement.canceled -= instance.OnMovement;
+            @MovementStandart.started -= instance.OnMovementStandart;
+            @MovementStandart.performed -= instance.OnMovementStandart;
+            @MovementStandart.canceled -= instance.OnMovementStandart;
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
@@ -412,6 +492,12 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @MovementSphere.started -= instance.OnMovementSphere;
+            @MovementSphere.performed -= instance.OnMovementSphere;
+            @MovementSphere.canceled -= instance.OnMovementSphere;
+            @ChangeModul.started -= instance.OnChangeModul;
+            @ChangeModul.performed -= instance.OnChangeModul;
+            @ChangeModul.canceled -= instance.OnChangeModul;
         }
 
         /// <summary>
@@ -453,12 +539,12 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
     public interface IGamplayActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Movement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "MovementStandart" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMovement(InputAction.CallbackContext context);
+        void OnMovementStandart(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Look" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -480,5 +566,19 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MovementSphere" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMovementSphere(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ChangeModul" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChangeModul(InputAction.CallbackContext context);
     }
 }

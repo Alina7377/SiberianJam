@@ -61,13 +61,20 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.4.5f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\SiberianJam\Scripts\InteractebleObjects\PushingObject.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\States\IOperatingMode.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\InputSystem\PlayerController.cs" />
+    <Compile Include="Assets\SiberianJam\Scripts\Player\States\DraggingAbility.cs" />
+    <Compile Include="Assets\SiberianJam\Scripts\Player\States\IModuleAbility.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\States\RobotMode.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\CharacterState.cs" />
+    <Compile Include="Assets\SiberianJam\Scripts\Player\States\PushingAbility.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\SiberianJam\Scripts\InteractebleObjects\IPushObject.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\States\SphereMode.cs" />
+    <Compile Include="Assets\SiberianJam\Scripts\InteractebleObjects\DraggingObject.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\CharacterInputController.cs" />
+    <Compile Include="Assets\SiberianJam\Scripts\InteractebleObjects\IInteractObject.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\CameraFolow.cs" />
   </ItemGroup>
   <ItemGroup>
