@@ -5,6 +5,7 @@ public class PushingAbility : MonoBehaviour, IModuleAbility
 {
     [SerializeField] private Transform _handPoint;
     [SerializeField] private Vector3 _sizeBox;
+    [SerializeField] private GameObject _visualComponent;
 
     [SerializeField] private float _forcePush;
 
@@ -13,6 +14,11 @@ public class PushingAbility : MonoBehaviour, IModuleAbility
     public void Interact(bool active)
     {
         _isPusshing = active;
+    }
+
+    public void SetActiveVisual(bool isActive)
+    {
+        _visualComponent.SetActive(isActive);
     }
 
     private void FixedUpdate()
@@ -24,7 +30,6 @@ public class PushingAbility : MonoBehaviour, IModuleAbility
 
     private void Push()
     {
-        Debug.Log("Ïóø");
         Collider[] hitObjects = Physics.OverlapBox(_handPoint.position, _sizeBox);
 
         if (hitObjects == null || hitObjects.Length == 0) return;

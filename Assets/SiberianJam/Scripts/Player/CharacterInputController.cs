@@ -5,11 +5,11 @@ using UnityEngine;
 public class CharacterInputController : MonoBehaviour
 {
     [SerializeField] private CharacterState _stateCharacter;
+    [SerializeField] private List<SAbility> _interactAbilitys;
+    [SerializeField] private Animator _mainAnomator;
 
-    [SerializeField] private List<MonoBehaviour> _interactAbilitys;
-
-    private MonoBehaviour _activeModule;
-    private int _activeAbylityNum = 0;
+    private IModuleAbility _activeModule;
+    private int _activeAbylityNum = -1;
     private PlayerController _inputControl;
 
     private void Awake()
@@ -19,21 +19,31 @@ public class CharacterInputController : MonoBehaviour
         _inputControl.Gamplay.Interact.started += context => Interact();
         _inputControl.Gamplay.Interact.canceled += context => EndInteract();
         _inputControl.Gamplay.ChangeModul.started += context => ChangeModule();
-        if (_interactAbilitys.Count > 0)
-            _activeModule = _interactAbilitys[_activeAbylityNum];
     }
 
     private void ChangeModule()
-    {
-        EndInteract();
+    {       
         if (_stateCharacter.IsShpereMode) return;
         if (_interactAbilitys.Count == 0) return;
-        Debug.Log("Переклчюение режима");
+        EndInteract();
+        if (_activeModule != null)
+            _activeModule.SetActiveVisual(false);
         _activeAbylityNum++;
         if (_interactAbilitys.Count <= _activeAbylityNum)
             _activeAbylityNum = 0;
-        _activeModule = _interactAbilitys[_activeAbylityNum];
-        Debug.Log("Новый режим " + _activeAbylityNum);
+        if (_interactAbilitys[_activeAbylityNum].IsCanUse && _interactAbilitys[_activeAbylityNum].AbilityObject is IModuleAbility activeModule)
+        {
+            Debug.Log("Попали в активацию");
+            _activeModule = activeModule;
+            _activeModule.SetActiveVisual(true);
+        } 
+        else
+        {
+            Debug.Log("Нет активного модуля");
+            _activeAbylityNum--;
+            if (_activeAbylityNum<0)
+                _activeAbylityNum = _interactAbilitys.Count-1;
+        }
     }
 
     private void Interact()
@@ -72,4 +82,11 @@ public class CharacterInputController : MonoBehaviour
         _stateCharacter.MovementShpere(_inputControl.Gamplay.MovementSphere.ReadValue<Vector2>());
         _stateCharacter.Rotation(_inputControl.Gamplay.Look.ReadValue<Vector2>());
     }   
+}
+
+[Serializable]
+public struct SAbility
+{
+    public MonoBehaviour AbilityObject;
+    public bool IsCanUse;
 }

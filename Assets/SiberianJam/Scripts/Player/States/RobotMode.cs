@@ -4,7 +4,6 @@ public class RobotMode : MonoBehaviour, IOperatingMode
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _speedRotation;
-    [SerializeField] private GameObject _visualmodel;
     [SerializeField] private float _gravityForce;
 
     private CharacterController _characterController;
@@ -12,12 +11,12 @@ public class RobotMode : MonoBehaviour, IOperatingMode
 
     public void Activity(bool isActive)
     {
-        _visualmodel.SetActive(isActive);
         if (isActive)
         {
             Vector3 sizeShpere = new Vector3(0, 0.5f, 0);            
             _characterController.center = sizeShpere;
             _characterController.height = 2f;
+            _characterController.radius = 0.6f;
         }
     }
 
@@ -25,11 +24,6 @@ public class RobotMode : MonoBehaviour, IOperatingMode
     {
         Vector3 pos = (new Vector3(direction.x, 0, direction.y) * _speed * Time.deltaTime);
 
-        // Получаем приобразование мировых координат в локальные для определения нужной анимации
-        /* Vector3 animatePos = _controller.transform.InverseTransformDirection(new Vector3(direction.x, 0, direction.y)).normalized;
-
-         _animationManager.AnimatorSetParameter("Horizontal", animatePos.x);
-         _animationManager.AnimatorSetParameter("Vertical", animatePos.z);*/
         pos += new Vector3(0, _gravityForce * Time.deltaTime, 0);
         _characterController.Move(pos);
     }
