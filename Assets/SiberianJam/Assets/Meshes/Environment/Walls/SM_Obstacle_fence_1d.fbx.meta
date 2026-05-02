@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e458ab0ddce230646b67c2b33310bf1c
+guid: 38e6fed840366d64e8c72f896fc8f1b8
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Need_Power
-    second: {fileID: 2100000, guid: 7af6de6126493a7438ed6c643b58f42c, type: 2}
+      name: M_Metalness
+    second: {fileID: 2100000, guid: 69cbed0cc30630c44aaddb75a5237876, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Obstacle_Pink
+    second: {fileID: 2100000, guid: 5136cd15efc520141b66c3ebe889c5f5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -40,7 +45,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
