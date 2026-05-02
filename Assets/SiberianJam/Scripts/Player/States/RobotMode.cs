@@ -5,6 +5,7 @@ public class RobotMode : MonoBehaviour, IOperatingMode
     [SerializeField] private float _speed;
     [SerializeField] private float _speedRotation;
     [SerializeField] private float _gravityForce;
+    [SerializeField] private int _layerNum = 7;
 
     private CharacterController _characterController;
     private Camera _camera;
@@ -15,8 +16,8 @@ public class RobotMode : MonoBehaviour, IOperatingMode
         {
             Vector3 sizeShpere = new Vector3(0, 0.5f, 0);            
             _characterController.center = sizeShpere;
-            _characterController.height = 2f;
-            _characterController.radius = 0.6f;
+            _characterController.height = 1.6f;
+            _characterController.radius = 0.5f;
         }
     }
 
@@ -48,4 +49,6 @@ public class RobotMode : MonoBehaviour, IOperatingMode
     {
         _characterController = charactercontroller;
     }
+
+    public int GetLayer { get => _layerNum; }
 }

@@ -6,15 +6,13 @@ public class SphereMode : MonoBehaviour, IOperatingMode
     [SerializeField] private float _speedRotation;
     [SerializeField] private float _maxDistance;
     [SerializeField] private Animator _mainAnimator;
-
     [SerializeField] private float _gravityForce;
+    [SerializeField] private int _layerNum = 3;
 
     private CharacterController _characterController;
     private Camera _camera;
 
-    private Vector3 _mausePosition;
-
-     
+    private Vector3 _mausePosition;     
 
     public void Activity(bool isActive)
     {
@@ -68,4 +66,6 @@ public class SphereMode : MonoBehaviour, IOperatingMode
     {
         _characterController = charactercontroller;
     }
+
+    public int GetLayer { get => _layerNum; }
 }
