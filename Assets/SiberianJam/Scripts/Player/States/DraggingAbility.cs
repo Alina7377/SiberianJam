@@ -4,9 +4,13 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
 {
     [SerializeField] private Transform _handPoint;
     [SerializeField] private float _radiusHand;
+    [SerializeField] private GameObject _visualComponent;
+    [SerializeField] private CharacterController _characterController;
+    [SerializeField] private float _newRadius;
 
     private GameObject _dragObject = null;
     private bool _isDrag = false;
+    private float _baseSize = 0;
 
     private void DragObgect()
     {
@@ -23,11 +27,13 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
         {
             if (hitObject.TryGetComponent<IDragObject>(out IDragObject interactObject))
             {
+                _baseSize = _characterController.radius;
                 interactObject.Interact();
                 _isDrag = true;
                 _dragObject = hitObject.gameObject;
                 _dragObject.transform.SetParent(_handPoint);
                 _dragObject.transform.localPosition = Vector3.zero;
+                _characterController.radius = _newRadius;
                 return;
             }
         }        
@@ -40,8 +46,12 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
             _isDrag = false;
             return;
         }
+        if (_baseSize > 0)
+            _characterController.radius = _baseSize;
+
         if (_dragObject.TryGetComponent<IDragObject>(out IDragObject interactObject))
             interactObject.Interact();
+        
         _dragObject.transform.SetParent(null);
         _dragObject = null;
         _isDrag = false;
@@ -56,4 +66,9 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
             DragObgect();
     }
 
+    public void SetActiveVisual(bool isActive)
+    {
+        Debug.Log("Сработало");
+        _visualComponent.SetActive(isActive);
+    }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class CharacterState : MonoBehaviour
 {
     [SerializeField] private CharacterController _characterControler;
+    [SerializeField] private Animator _mainAnimator;
     [SerializeField] private Camera _camera;
     [SerializeField] private List<MonoBehaviour> _statesScripts;
     [SerializeField] private bool _sphereMode;
@@ -50,7 +51,9 @@ public class CharacterState : MonoBehaviour
     public void Rotation(Vector2 look)
     {
         if (_isShpereMode)
+
             _stateMods[0].Rotate(look);
+
         else
         {
             _stateMods[1].Rotate(look);
@@ -60,10 +63,13 @@ public class CharacterState : MonoBehaviour
     public void ChangeState()
     {
         if(_isShpereMode)
-            _stateMods[0].Activity(false);
-        else
-            _stateMods[1].Activity(false);
-        _isShpereMode = !_isShpereMode;
+             _stateMods[0].Activity(false);
+         else
+             _stateMods[1].Activity(false);
+
+         _isShpereMode = !_isShpereMode;
+        _mainAnimator.SetBool("IsInteractMode", !_isShpereMode);
+
         if (_isShpereMode)
             _stateMods[0].Activity(true);
         else
