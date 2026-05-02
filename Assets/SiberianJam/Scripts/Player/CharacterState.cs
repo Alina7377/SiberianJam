@@ -71,9 +71,16 @@ public class CharacterState : MonoBehaviour
         _mainAnimator.SetBool("IsInteractMode", !_isShpereMode);
 
         if (_isShpereMode)
+        {
             _stateMods[0].Activity(true);
+            gameObject.layer = 3;
+        }
+
         else
+        {
             _stateMods[1].Activity(true);
+            gameObject.layer = 7;
+        }
     }
 
     public bool IsShpereMode { get => _isShpereMode; }

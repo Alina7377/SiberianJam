@@ -184,17 +184,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
-                    "id": "8ec1dcbc-7f4b-49d1-8ba4-d7f7087f424a",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MovementSphere",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "5395bf5e-10cf-418c-8f59-cd24f5accaaa",
                     "path": "<Keyboard>/q",
