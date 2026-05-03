@@ -7,6 +7,8 @@ public class CharacterInputController : MonoBehaviour, ITake
     [SerializeField] private CharacterState _stateCharacter;
     [SerializeField] private List<SAbility> _interactAbilitys;
     [SerializeField] private Animator _mainAnomator;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audio;
 
     private IModuleAbility _activeModule;
     private int _activeAbylityNum = 0;
@@ -93,7 +95,8 @@ public class CharacterInputController : MonoBehaviour, ITake
         EndInteract();
         if (_activeModule != null)
             _activeModule.SetActiveVisual(false);
-
+        
+        _audioSource.PlayOneShot(_audio);
         _stateCharacter.ChangeState();
         
         if (!_stateCharacter.IsShpereMode && _activeModule!=null)

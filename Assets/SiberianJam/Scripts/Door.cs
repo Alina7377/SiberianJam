@@ -4,7 +4,9 @@ using UnityEngine;
 public class Door : MonoBehaviour, IActivate
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private List<SActivateInput> _inputSignals;    
+    [SerializeField] private List<SActivateInput> _inputSignals;
+    [SerializeField] private AudioClip _audio;
+    [SerializeField] private AudioSource _audioSource;
 
     public void Activate(GameObject obj, bool isActive)
     {
@@ -25,6 +27,9 @@ public class Door : MonoBehaviour, IActivate
 
     private void OpenDoor(bool isOpen)
     {
+        if (isOpen)
+            _audioSource.PlayOneShot(_audio);
         _animator.SetBool("isOpen", isOpen);
+        
     }
 }

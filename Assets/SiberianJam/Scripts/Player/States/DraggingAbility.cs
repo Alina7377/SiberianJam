@@ -7,6 +7,8 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
     [SerializeField] private GameObject _visualComponent;
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private float _newRadius;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audio;
 
     private GameObject _dragObject = null;
     private float _baseSize = 0;
@@ -25,6 +27,7 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
         {
             if (hitObject.TryGetComponent<IDragObject>(out IDragObject interactObject))
             {
+                _audioSource.PlayOneShot(_audio);
                 _baseSize = _characterController.radius;
                 interactObject.Interact();
                 _dragObject = hitObject.gameObject;
