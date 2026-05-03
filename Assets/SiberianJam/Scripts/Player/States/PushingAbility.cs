@@ -10,9 +10,17 @@ public class PushingAbility : MonoBehaviour, IModuleAbility
     [SerializeField] private float _forcePush;
 
     private bool _isPusshing = false;
+    private float _currentForce;
+
+    public void DopInteract(bool active)
+    {
+        _isPusshing = active;
+        _currentForce = _forcePush * -1;
+    }
 
     public void Interact(bool active)
     {
+        _currentForce = _forcePush;
         _isPusshing = active;
     }
 
@@ -37,7 +45,7 @@ public class PushingAbility : MonoBehaviour, IModuleAbility
         {
             if (hitObject.TryGetComponent<IPushObject>(out IPushObject pushObject))
             {
-                pushObject.Push(transform.forward, _forcePush);                
+                pushObject.Push(transform.forward, _currentForce);             
                 return;
             }
         }

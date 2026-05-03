@@ -65,4 +65,9 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
     {
         _visualComponent.SetActive(isActive);
     }
+
+    public void DopInteract(bool isActive)
+    {
+        Interact(isActive);
+    }
 }

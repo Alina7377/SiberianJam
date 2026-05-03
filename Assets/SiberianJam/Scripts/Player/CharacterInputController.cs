@@ -11,6 +11,8 @@ public class CharacterInputController : MonoBehaviour, ITake
     private IModuleAbility _activeModule;
     private int _activeAbylityNum = 0;
     private PlayerController _inputControl;
+    private bool _canUseInteractMode = true;
+    private List<GameObject> _volumes = new List<GameObject>();
 
     private void Awake()
     {
@@ -19,6 +21,23 @@ public class CharacterInputController : MonoBehaviour, ITake
         _inputControl.Gamplay.Interact.started += context => Interact();
         _inputControl.Gamplay.Interact.canceled += context => EndInteract();
         _inputControl.Gamplay.ChangeModul.started += context => ChangeModule();
+        _inputControl.Gamplay.DopInteract.started += context => DopInteract();
+        _inputControl.Gamplay.DopInteract.canceled += context => DopInteractEnd();
+    }
+
+    private void DopInteract()
+    {
+
+        if (_stateCharacter.IsShpereMode) return;
+
+        if (_activeModule is IModuleAbility ability)
+            ability.DopInteract(true);
+    }
+
+    private void DopInteractEnd()
+    {
+        if (_activeModule is IModuleAbility ability)
+            ability.DopInteract(false);
     }
 
     private void ChangeModule()
@@ -68,6 +87,8 @@ public class CharacterInputController : MonoBehaviour, ITake
 
     private void ChangeMode()
     {
+        if (_stateCharacter.IsShpereMode && !_canUseInteractMode)
+            return;
         EndInteract();
         if (_activeModule != null)
             _activeModule.SetActiveVisual(false);
@@ -106,13 +127,29 @@ public class CharacterInputController : MonoBehaviour, ITake
         }
         else
             return;
-        Debug.Log("Сюда попали " + _activeModule);
         if (_interactAbilitys[num].AbilityObject is IModuleAbility moduleAbility)
         {
-            Debug.Log("И Сюда попали ");
+            if (_activeModule != null)
+                _activeModule.SetActiveVisual(false);
             _activeModule = moduleAbility;
             _activeAbylityNum = num;
         }
+
+        if (!_stateCharacter.IsShpereMode && _activeModule != null)
+            _activeModule.SetActiveVisual(true);
+    }
+
+    public void SetCanUseInteractionMode(bool canUse, GameObject volumeObject)
+    {
+        if (!canUse)
+            _volumes.Add(volumeObject);
+        else
+            _volumes.Remove(volumeObject);
+        if (canUse && _volumes.Count == 0)
+            _canUseInteractMode = true;
+        else
+            _canUseInteractMode = false;
+
     }
 }
 

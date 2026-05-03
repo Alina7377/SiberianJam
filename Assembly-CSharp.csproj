@@ -70,6 +70,7 @@
     <Compile Include="Assets\SiberianJam\Scripts\Lampa.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\States\RobotMode.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\CharacterState.cs" />
+    <Compile Include="Assets\SiberianJam\Scripts\NoUseIntecatMode.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\States\PushingAbility.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\InteractebleObjects\IPushObject.cs" />

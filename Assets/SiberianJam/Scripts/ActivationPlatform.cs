@@ -19,8 +19,6 @@ public class ActivationPlatform : MonoBehaviour, IActivate
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(collision.gameObject);
-
         if (!_isCanActivate) return;
         if (collision.gameObject.TryGetComponent<IInteractObject>(out IInteractObject interactObject))
             if (interactObject.GetObjectType == _typeActivateObject)
@@ -54,7 +52,6 @@ public class ActivationPlatform : MonoBehaviour, IActivate
             
             foreach (var activateObject in activateSignal._activateObjects)
             {
-                Debug.Log("Активация " + isActive);
                 if (activateObject is IActivate activate)
                     activate.Activate(gameObject, isActive);
             }

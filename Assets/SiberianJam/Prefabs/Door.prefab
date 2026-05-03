@@ -197,6 +197,8 @@ MonoBehaviour:
   _standartMaterial: {fileID: 2100000, guid: 7af6de6126493a7438ed6c643b58f42c, type: 2}
   _render: {fileID: 4982733186555373894}
   _activateMaterial: {fileID: 2100000, guid: 76bf5c2c2ada96540a847be46ee3d4f2, type: 2}
+  _timeFlash: 0.5
+  _isUse: 1
 --- !u!23 &4173707280107181422 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7052547181425347341, guid: 19af8f22ca174de498a6739831dced26, type: 3}
@@ -227,6 +229,8 @@ MonoBehaviour:
   _standartMaterial: {fileID: 2100000, guid: 7af6de6126493a7438ed6c643b58f42c, type: 2}
   _render: {fileID: 4173707280107181422}
   _activateMaterial: {fileID: 2100000, guid: 76bf5c2c2ada96540a847be46ee3d4f2, type: 2}
+  _timeFlash: 0.5
+  _isUse: 0
 --- !u!1 &7029146359641246449 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4159313659860866196, guid: 19af8f22ca174de498a6739831dced26, type: 3}
@@ -247,3 +251,5 @@ MonoBehaviour:
   _standartMaterial: {fileID: 2100000, guid: 7af6de6126493a7438ed6c643b58f42c, type: 2}
   _render: {fileID: 3261382369930191302}
   _activateMaterial: {fileID: 0}
+  _timeFlash: 0.5
+  _isUse: 0
