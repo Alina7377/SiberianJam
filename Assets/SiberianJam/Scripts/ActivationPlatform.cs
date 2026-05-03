@@ -10,6 +10,7 @@ public class ActivationPlatform : MonoBehaviour, IActivate
     [SerializeField] private List<SActivateOutput> _outputSignals;
 
     private bool _isCanActivate = false;
+    private bool _hasRequiredObject = false;
 
     private void Start()
     {
@@ -18,11 +19,12 @@ public class ActivationPlatform : MonoBehaviour, IActivate
     }
 
     private void OnTriggerEnter(Collider collision)
-    {
-        if (!_isCanActivate) return;
+    {        
         if (collision.gameObject.TryGetComponent<IInteractObject>(out IInteractObject interactObject))
             if (interactObject.GetObjectType == _typeActivateObject)
             {
+                _hasRequiredObject = true;
+                if (!_isCanActivate) return;
                 ChangeState(true);
             }
     }
@@ -30,10 +32,11 @@ public class ActivationPlatform : MonoBehaviour, IActivate
 
     private void OnTriggerExit(Collider collision)
     {
-        if (!_isCanActivate) return;
         if (collision.gameObject.TryGetComponent<IInteractObject>(out IInteractObject interactObject))
             if (interactObject.GetObjectType == _typeActivateObject)
             {
+                _hasRequiredObject = false;
+                if (!_isCanActivate) return;
                 ChangeState(false);
             }
     }
@@ -73,6 +76,8 @@ public class ActivationPlatform : MonoBehaviour, IActivate
                 isAllActive = false;
         }
         _isCanActivate = isAllActive;
+        if (_hasRequiredObject)
+            ChangeState(_isCanActivate);
     }
 }
 
