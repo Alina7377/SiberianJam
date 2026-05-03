@@ -87,6 +87,7 @@ public class CharacterInputController : MonoBehaviour, ITake
 
     private void ChangeMode()
     {
+        if (_activeModule == null) return;
         if (_stateCharacter.IsShpereMode && !_canUseInteractMode)
             return;
         EndInteract();
