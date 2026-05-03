@@ -6,6 +6,8 @@ public class PushingAbility : MonoBehaviour, IModuleAbility
     [SerializeField] private Transform _handPoint;
     [SerializeField] private Vector3 _sizeBox;
     [SerializeField] private GameObject _visualComponent;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audio;
 
     [SerializeField] private float _forcePush;
 
@@ -45,6 +47,7 @@ public class PushingAbility : MonoBehaviour, IModuleAbility
         {
             if (hitObject.TryGetComponent<IPushObject>(out IPushObject pushObject))
             {
+                _audioSource.PlayOneShot(_audio);
                 pushObject.Push(transform.forward, _currentForce);             
                 return;
             }
