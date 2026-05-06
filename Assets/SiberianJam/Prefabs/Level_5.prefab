@@ -16647,6 +16647,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2667535215245434415, guid: 62a2478b8de1a5841b801cff2c387ecb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4022540227708087474, guid: 62a2478b8de1a5841b801cff2c387ecb, type: 3}
       propertyPath: m_Name
       value: ActivPlate (1)
