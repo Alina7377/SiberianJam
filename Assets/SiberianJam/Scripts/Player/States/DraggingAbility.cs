@@ -9,6 +9,7 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
     [SerializeField] private float _newRadius;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audio;
+    [SerializeField] private LayerMask _layerMaskChrackHit;
 
     private GameObject _dragObject = null;
     private float _baseSize = 0;
@@ -56,11 +57,26 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
 
     }
 
+    private bool IsCanDrag()
+    {
+        Ray ray = new Ray(gameObject.transform.position, gameObject.transform.forward);
+        float distance = Vector3.Distance(transform.position, _handPoint.position) + (_radiusHand / 2);
+        if (Physics.Raycast(ray, out RaycastHit hit, distance, _layerMaskChrackHit))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public void Interact(bool isActive)
     {
         if (!isActive)
             DropObject();
         else
+            if (IsCanDrag())
             DragObgect();
     }
 

@@ -8,6 +8,7 @@ public class PushingAbility : MonoBehaviour, IModuleAbility
     [SerializeField] private GameObject _visualComponent;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audio;
+    [SerializeField] private LayerMask _layerMaskChrackHit;
 
     [SerializeField] private float _forcePush;
 
@@ -16,12 +17,16 @@ public class PushingAbility : MonoBehaviour, IModuleAbility
 
     public void DopInteract(bool active)
     {
+        _audioSource.PlayOneShot(_audio);
         _isPusshing = active;
         _currentForce = _forcePush * -1;
     }
 
     public void Interact(bool active)
     {
+        if (active && !IsCanPuch()) return;
+        if (active)
+            _audioSource.PlayOneShot(_audio);
         _currentForce = _forcePush;
         _isPusshing = active;
     }
@@ -43,14 +48,29 @@ public class PushingAbility : MonoBehaviour, IModuleAbility
         Collider[] hitObjects = Physics.OverlapBox(_handPoint.position, _sizeBox);
 
         if (hitObjects == null || hitObjects.Length == 0) return;
+
         foreach (var hitObject in hitObjects)
         {
             if (hitObject.TryGetComponent<IPushObject>(out IPushObject pushObject))
             {
-                _audioSource.PlayOneShot(_audio);
                 pushObject.Push(transform.forward, _currentForce);             
                 return;
             }
+        }
+    }
+
+    private bool IsCanPuch()
+    {
+        Ray ray = new Ray(gameObject.transform.position, gameObject.transform.forward);
+        float distance = Vector3.Distance(transform.position, _handPoint.position) + (_sizeBox.z);
+        if (Physics.Raycast(ray, out RaycastHit hit, distance, _layerMaskChrackHit))
+        {
+            Debug.Log(hit.collider.gameObject);
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 }
