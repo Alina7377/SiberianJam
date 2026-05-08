@@ -6,7 +6,6 @@ public class CharacterInputController : MonoBehaviour, ITake
 {
     [SerializeField] private CharacterState _stateCharacter;
     [SerializeField] private List<SAbility> _interactAbilitys;
-    [SerializeField] private Animator _mainAnomator;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audio;
 
@@ -25,6 +24,7 @@ public class CharacterInputController : MonoBehaviour, ITake
         _inputControl.Gamplay.ChangeModul.started += context => ChangeModule();
         _inputControl.Gamplay.DopInteract.started += context => DopInteract();
         _inputControl.Gamplay.DopInteract.canceled += context => DopInteractEnd();
+        CheackActiveModule();
     }
 
     private void DopInteract()
@@ -52,10 +52,9 @@ public class CharacterInputController : MonoBehaviour, ITake
         _activeAbylityNum++;
         if (_interactAbilitys.Count <= _activeAbylityNum)
             _activeAbylityNum = 0;
-        if (_interactAbilitys[_activeAbylityNum].IsCanUse && _interactAbilitys[_activeAbylityNum].AbilityObject is IModuleAbility activeModule)
+        if (_interactAbilitys[_activeAbylityNum].IsCanUse)
         {
-            _activeModule = activeModule;
-            _activeModule.SetActiveVisual(true);
+            SetAbility(_interactAbilitys[_activeAbylityNum].AbilityObject);
         } 
         else
         {
@@ -64,10 +63,9 @@ public class CharacterInputController : MonoBehaviour, ITake
                 _activeAbylityNum = _interactAbilitys.Count-1;
             if (!_stateCharacter.IsShpereMode)
             {
-                if (_interactAbilitys[_activeAbylityNum].IsCanUse && _interactAbilitys[_activeAbylityNum].AbilityObject is IModuleAbility ability)
+                if (_interactAbilitys[_activeAbylityNum].IsCanUse)
                 {
-                    _activeModule = ability;
-                    _activeModule.SetActiveVisual(true);
+                    SetAbility(_interactAbilitys[_activeAbylityNum].AbilityObject);
                 }
             }
         }
@@ -119,6 +117,29 @@ public class CharacterInputController : MonoBehaviour, ITake
         _stateCharacter.Movement(_inputControl.Gamplay.MovementStandart.ReadValue<Vector2>());
         _stateCharacter.MovementShpere(_inputControl.Gamplay.MovementSphere.ReadValue<Vector2>());
         _stateCharacter.Rotation(_inputControl.Gamplay.Look.ReadValue<Vector2>());
+    }
+
+    private void CheackActiveModule()
+    {
+        if (_activeModule != null) return;
+        foreach (var ability in _interactAbilitys)
+        {
+            if (ability.IsCanUse)
+            {
+                SetAbility(ability.AbilityObject);
+                return;
+            }
+        }
+    }
+
+    private void SetAbility(MonoBehaviour abilityObject)
+    {
+        if (abilityObject is IModuleAbility activeModule)
+        {
+            _activeModule = activeModule;
+            if (!_stateCharacter.IsShpereMode)
+                _activeModule.SetActiveVisual(true);
+        }
     }
 
     public void Take(int num)
