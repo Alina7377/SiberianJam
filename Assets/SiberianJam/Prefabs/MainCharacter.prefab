@@ -968,6 +968,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -5842939511189596493, guid: 5c3782a5cfedf9d4b9e4862cb5a6c737, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5c3782a5cfedf9d4b9e4862cb5a6c737, type: 3}
       propertyPath: m_Name
       value: SM_Main_character
