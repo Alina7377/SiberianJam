@@ -23,7 +23,7 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: 
+  m_LockedProperties: _Metallic _MetallicGlossMap
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -94,7 +94,7 @@ Material:
     - _METALNESS: 0
     - _Metallic: 0
     - _Mode: 3
-    - _OPACITY: 0.39999998
+    - _OPACITY: 0.35
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueControl: 0
@@ -116,9 +116,9 @@ Material:
     - _BASE_COLOR: {r: 0.49806133, g: 0.45594516, b: 0.8867924, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EMISSION_COLOR: {r: 0.010000001, g: 0.030000001, b: 0.1, a: 0.1}
+    - _EMISSION_COLOR: {r: 0.010000001, g: 0.030000003, b: 0.09999997, a: 1}
     - _EmissionColor: {r: 0.010000001, g: 0.030000001, b: 0.1, a: 0.1}
-    - _SPECULAR_COLOR: {r: 1, g: 1, b: 1, a: 1}
+    - _SPECULAR_COLOR: {r: 0.75, g: 0.85150087, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

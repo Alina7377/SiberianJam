@@ -156,8 +156,8 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BASE_COLOR: {r: 0.7128, g: 0.7597543, b: 0.8, a: 1}
-    - _BaseColor: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 1}
-    - _Color: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 1}
+    - _BaseColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+    - _Color: {r: 0.9, g: 0.9, b: 0.9, a: 1}
     - _EMISSION_COLOR: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0.6465594, g: 0.6994421, b: 0.7490196, a: 1}
     - _SPECULAR_COLOR: {r: 1, g: 1, b: 1, a: 1}
