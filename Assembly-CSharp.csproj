@@ -77,6 +77,7 @@
     <Compile Include="Assets\SiberianJam\Scripts\Door.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\TakeModule.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\States\SphereMode.cs" />
+    <Compile Include="Assets\SiberianJam\Scripts\MenuAndUI\Settings.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\ITake.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\InteractebleObjects\DraggingObject.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\ActivationPlatform.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Assets\SiberianJam\Scripts\IActivate.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\CameraFolow.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\InteractebleObjects\IIDragObject.cs" />
+    <Compile Include="Assets\SiberianJam\Scripts\MenuAndUI\SoundMaster.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
