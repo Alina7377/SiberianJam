@@ -5,11 +5,20 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
+    path: Assets/SiberianJam/Scenes/MainMenu.unity
+    guid: 0e55a939c79466744b1893e5b16d5f6b
+  - enabled: 1
     path: Assets/SiberianJam/Scenes/Level.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/SiberianJam/Scenes/Scene_1.unity
     guid: d873e01ab2d2f19449c88adab4ada2d4
+  - enabled: 1
+    path: Assets/SiberianJam/Scenes/Scene_2.unity
+    guid: 93f098f3bc892b84f84108da9b48f4a6
+  - enabled: 1
+    path: Assets/SiberianJam/Scenes/Scene_3.unity
+    guid: 050a441dd7432a0479b6a1901f1b3154
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 8e001f1cb6426bd4eb4f32de5c0d6f94, type: 3}

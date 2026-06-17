@@ -154,6 +154,15 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EndGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""0f078c87-e2c7-4bb7-907e-9e27ad8b6bae"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -288,6 +297,17 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""action"": ""DopInteract"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2b99099c-8699-4089-9c7b-3bcf2a3bdb15"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EndGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -303,6 +323,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         m_Gamplay_MovementSphere = m_Gamplay.FindAction("MovementSphere", throwIfNotFound: true);
         m_Gamplay_ChangeModul = m_Gamplay.FindAction("ChangeModul", throwIfNotFound: true);
         m_Gamplay_DopInteract = m_Gamplay.FindAction("DopInteract", throwIfNotFound: true);
+        m_Gamplay_EndGame = m_Gamplay.FindAction("EndGame", throwIfNotFound: true);
     }
 
     ~@PlayerController()
@@ -390,6 +411,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gamplay_MovementSphere;
     private readonly InputAction m_Gamplay_ChangeModul;
     private readonly InputAction m_Gamplay_DopInteract;
+    private readonly InputAction m_Gamplay_EndGame;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gamplay".
     /// </summary>
@@ -429,6 +451,10 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gamplay/DopInteract".
         /// </summary>
         public InputAction @DopInteract => m_Wrapper.m_Gamplay_DopInteract;
+        /// <summary>
+        /// Provides access to the underlying input action "Gamplay/EndGame".
+        /// </summary>
+        public InputAction @EndGame => m_Wrapper.m_Gamplay_EndGame;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -476,6 +502,9 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             @DopInteract.started += instance.OnDopInteract;
             @DopInteract.performed += instance.OnDopInteract;
             @DopInteract.canceled += instance.OnDopInteract;
+            @EndGame.started += instance.OnEndGame;
+            @EndGame.performed += instance.OnEndGame;
+            @EndGame.canceled += instance.OnEndGame;
         }
 
         /// <summary>
@@ -508,6 +537,9 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             @DopInteract.started -= instance.OnDopInteract;
             @DopInteract.performed -= instance.OnDopInteract;
             @DopInteract.canceled -= instance.OnDopInteract;
+            @EndGame.started -= instance.OnEndGame;
+            @EndGame.performed -= instance.OnEndGame;
+            @EndGame.canceled -= instance.OnEndGame;
         }
 
         /// <summary>
@@ -597,5 +629,12 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDopInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "EndGame" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEndGame(InputAction.CallbackContext context);
     }
 }

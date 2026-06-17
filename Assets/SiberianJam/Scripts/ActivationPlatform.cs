@@ -11,6 +11,7 @@ public class ActivationPlatform : MonoBehaviour, IActivate
 
     private bool _isCanActivate = false;
     private bool _hasRequiredObject = false;
+    private List<GameObject> _activateObjects = new List<GameObject>();
 
     private void Start()
     {
@@ -22,10 +23,12 @@ public class ActivationPlatform : MonoBehaviour, IActivate
     {        
         if (collision.gameObject.TryGetComponent<IInteractObject>(out IInteractObject interactObject))
             if (interactObject.GetObjectType == _typeActivateObject)
-            {
+            {                
                 _hasRequiredObject = true;
                 if (!_isCanActivate) return;
-                ChangeState(true);
+                if (_activateObjects.Count==0)
+                    ChangeState(true);
+                _activateObjects.Add(collision.gameObject);
             }
     }
 
@@ -37,7 +40,10 @@ public class ActivationPlatform : MonoBehaviour, IActivate
             {
                 _hasRequiredObject = false;
                 if (!_isCanActivate) return;
-                ChangeState(false);
+                _activateObjects.Remove(collision.gameObject);
+                if (_activateObjects.Count == 0)
+                    ChangeState(false);
+                
             }
     }
 

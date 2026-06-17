@@ -1,8 +1,9 @@
+using SaveSystemData;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterInputController : MonoBehaviour, ITake
+public class CharacterInputController : SavedObject, ITake
 {
     [SerializeField] private CharacterState _stateCharacter;
     [SerializeField] private List<SAbility> _interactAbilitys;
@@ -14,6 +15,7 @@ public class CharacterInputController : MonoBehaviour, ITake
     private PlayerController _inputControl;
     private bool _canUseInteractMode = true;
     private List<GameObject> _volumes = new List<GameObject>();
+    private PauseMenu _pauseMenu;
 
     private void Awake()
     {
@@ -23,8 +25,18 @@ public class CharacterInputController : MonoBehaviour, ITake
         _inputControl.Gamplay.Interact.canceled += context => EndInteract();
         _inputControl.Gamplay.ChangeModul.started += context => ChangeModule();
         _inputControl.Gamplay.DopInteract.started += context => DopInteract();
-        _inputControl.Gamplay.DopInteract.canceled += context => DopInteractEnd();
+        //_inputControl.Gamplay.DopInteract.canceled += context => DopInteractEnd();
+        _inputControl.Gamplay.EndGame.started += context => ShowPauseMenu();
         CheackActiveModule();
+        if (_guid == string.Empty)
+            _guid = CreatHashID(gameObject.name, transform.position);
+    }
+
+    private void ShowPauseMenu()
+    {
+        Debug.Log(" Событие вызова меню " + _pauseMenu);
+        if (_pauseMenu!= null)
+            _pauseMenu.OnShowPauseMenu(true);
     }
 
     private void DopInteract()
@@ -175,6 +187,47 @@ public class CharacterInputController : MonoBehaviour, ITake
         else
             _canUseInteractMode = false;
 
+    }
+
+    public override SObjectData SaveData()
+    {
+        SObjectData saveData = new SObjectData();
+
+        saveData.SavingObjectID = _guid;
+        saveData.BoolParamters = new List<bool>();
+        
+        foreach (var ability in _interactAbilitys)
+        {
+            saveData.BoolParamters.Add(ability.IsCanUse);           
+        }
+
+        return saveData;
+    }
+
+    public override void LoadData(SObjectData loadData)
+    {
+        if (loadData.SavingObjectID != _guid) return;
+
+        for (int i = 0; i < loadData.BoolParamters.Count; i++)
+        {
+            SAbility changeAbility = _interactAbilitys[i];            
+            changeAbility.IsCanUse = loadData.BoolParamters[i];
+            _interactAbilitys[i] = changeAbility;
+        }
+        CheackActiveModule();
+    }
+
+    public void ActiveControl(bool isActive)
+    {
+        if (isActive)
+            _inputControl.Enable();
+        else
+            _inputControl.Disable();
+    }
+
+    public void SetPauseMenu(PauseMenu pauseMenu)
+    {
+        _pauseMenu = pauseMenu;
     }
 }
 
