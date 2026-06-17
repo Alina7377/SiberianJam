@@ -558,6 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ff9f844ae164b44a1f3c4be6916d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterInputController
+  _guid: 
   _stateCharacter: {fileID: 6869934669934650454}
   _interactAbilitys:
   - AbilityObject: {fileID: 2491545061778529340}
@@ -662,6 +663,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1591
   _forcePush: 0.8
+  _forseYOffset: 0.1
 --- !u!143 &3258176521978476078
 CharacterController:
   m_ObjectHideFlags: 0
@@ -678,12 +680,12 @@ CharacterController:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Height: 0.3
   m_Radius: 0.3
-  m_SlopeLimit: 30
-  m_StepOffset: 0.2
+  m_SlopeLimit: 40
+  m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -696,7 +698,7 @@ AudioSource:
   m_GameObject: {fileID: 7871958249919311972}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8285821504036987312, guid: 6840311448bb68942bdbe17e7229e4f4, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0

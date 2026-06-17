@@ -1,16 +1,28 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundMaster : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private const float DisableVolume = -80;
+    [SerializeField] private AudioMixer _audioMixer;
+    [SerializeField] private float _minValueSlider = -20;
+
+    public void SetSoundVolume(string nameParam, float volume)
     {
-        
+        float value;
+        if (volume < _minValueSlider)
+            value = DisableVolume;
+        else
+            value = volume;
+
+        _audioMixer.SetFloat(nameParam, value);
     }
 
-    // Update is called once per frame
-    void Update()
+    public float GetSoundVolume(string nameParam)
     {
-        
+         _audioMixer.GetFloat(nameParam, out float value);
+        return value;
     }
+
+
 }

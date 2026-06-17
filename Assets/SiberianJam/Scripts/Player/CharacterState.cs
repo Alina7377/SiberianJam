@@ -29,6 +29,7 @@ public class CharacterState : MonoBehaviour
 
     public void Movement(Vector2 direction)
     {
+        if (!_characterControler.enabled) return;
         if (!_isShpereMode && _stateMods.Count > 1)
             _stateMods[1].Move(direction);
         else
@@ -39,7 +40,8 @@ public class CharacterState : MonoBehaviour
     }
     public void MovementShpere(Vector2 direction) 
     {
-        if(_isShpereMode && _stateMods.Count > 0)
+        if (!_characterControler.enabled) return;
+        if (_isShpereMode && _stateMods.Count > 0)
             _stateMods[0].Move(direction);
         else
         {
@@ -50,6 +52,7 @@ public class CharacterState : MonoBehaviour
 
     public void Rotation(Vector2 look)
     {
+        if (!_characterControler.enabled) return;
         if (_isShpereMode)
 
             _stateMods[0].Rotate(look);
@@ -62,10 +65,18 @@ public class CharacterState : MonoBehaviour
 
     public void ChangeState()
     {
-        if(_isShpereMode)
-             _stateMods[0].Activity(false);
-         else
-             _stateMods[1].Activity(false);
+        if (_isShpereMode)
+        {
+            _stateMods[0].Activity(false);
+            _characterControler.stepOffset = 0.25f;
+            _characterControler.slopeLimit = 45f;
+        }
+        else
+        {
+            _stateMods[1].Activity(false);
+            _characterControler.stepOffset = 0.2f;
+            _characterControler.slopeLimit = 30f;
+        }
 
          _isShpereMode = !_isShpereMode;
         _mainAnimator.SetBool("IsInteractMode", !_isShpereMode);
