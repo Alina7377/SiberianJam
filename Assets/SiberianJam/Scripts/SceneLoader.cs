@@ -63,7 +63,9 @@ public class SceneLoader : MonoBehaviour
         _removeScene = args[0];
 
         if (_playerPers == null)
-            _playerPers = FindAnyObjectByType<CharacterController>();
+        {     
+            _playerPers = FindAnyObjectByType<CharacterInputController>().GetComponent<CharacterController>();
+        }
 
         SceneBootstrap sceneBoots = FindAnyObjectByType<SceneBootstrap>();
         if (sceneBoots != null)

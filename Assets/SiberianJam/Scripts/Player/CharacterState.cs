@@ -68,14 +68,14 @@ public class CharacterState : MonoBehaviour
         if (_isShpereMode)
         {
             _stateMods[0].Activity(false);
-            _characterControler.stepOffset = 0.25f;
-            _characterControler.slopeLimit = 45f;
+            _characterControler.stepOffset = 0.2f;
+            _characterControler.slopeLimit = 30f;
         }
         else
         {
             _stateMods[1].Activity(false);
-            _characterControler.stepOffset = 0.2f;
-            _characterControler.slopeLimit = 30f;
+            _characterControler.stepOffset = 0.25f;
+            _characterControler.slopeLimit = 45f;
         }
 
          _isShpereMode = !_isShpereMode;

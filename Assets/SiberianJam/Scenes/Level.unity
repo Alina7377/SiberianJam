@@ -939,7 +939,7 @@ PrefabInstance:
       objectReference: {fileID: 2132716369854837507, guid: 6840311448bb68942bdbe17e7229e4f4, type: 2}
     - target: {fileID: 7260641632227210019, guid: 0fded47d9b3c55e46b1c01eedccd8cb3, type: 3}
       propertyPath: _forcePush
-      value: 0.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9223177769663728564, guid: 0fded47d9b3c55e46b1c01eedccd8cb3, type: 3}
       propertyPath: m_TagString

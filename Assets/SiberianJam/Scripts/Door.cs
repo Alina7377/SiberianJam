@@ -8,6 +8,8 @@ public class Door : MonoBehaviour, IActivate
     [SerializeField] private AudioClip _audio;
     [SerializeField] private AudioSource _audioSource;
 
+    private bool _isOpen = false;
+
     public void Activate(GameObject obj, bool isActive)
     {
         bool isAllActive = true;
@@ -27,9 +29,11 @@ public class Door : MonoBehaviour, IActivate
 
     private void OpenDoor(bool isOpen)
     {
-        if (isOpen)
+        if (isOpen && isOpen != _isOpen)
             _audioSource.PlayOneShot(_audio);
         _animator.SetBool("isOpen", isOpen);
-        
+        _isOpen = isOpen;
+
+
     }
 }

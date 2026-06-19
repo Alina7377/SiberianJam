@@ -6,6 +6,7 @@ public class SavePoint : SavedObject
 {
     [SerializeField] private Collider _collider;
     [SerializeField] private string _lvlName;
+    [SerializeField] private AudioSource _audioSource;
 
     private void Start()
     {
@@ -32,6 +33,7 @@ public class SavePoint : SavedObject
     private void OnTriggerEnter(Collider other)
     {
         _collider.enabled = false;
+        _audioSource.Play();
         SaveSystem.Instance.SavingData(_lvlName);
     }
 }
