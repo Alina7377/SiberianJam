@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class PushingObject : SavedObject, IPushObject
 {
-    [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private CharacterController _controller;
     [SerializeField] private ETypeObject _type;
+    [SerializeField] private float _gravityForce;
     [SerializeField] private float _offsetY = 0.371f;
 
     public ETypeObject GetObjectType => _type;
-    private bool _isPush = true;
-   // private Vector3 _defautState = new Vector3(0.)
+
+    private Vector3 _direction = Vector3.zero;
 
     private void Start()
     {
@@ -19,37 +20,16 @@ public class PushingObject : SavedObject, IPushObject
             _guid = CreatHashID(gameObject.name, transform.position);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (_isPush)
-        {
-            //_rigidbody.constraints = RigidbodyConstraints.None;
-            StartCoroutine(DiactivePhysics());
-        }
-
-    }
-
-    private IEnumerator DiactivePhysics()
-    {
-        _isPush = false;
-        yield return new WaitForSeconds(0.5f);
-        if (_rigidbody.linearVelocity.x == 0 && _rigidbody.linearVelocity.y == 0 && _rigidbody.linearVelocity.z == 0)
-        {
-            _rigidbody.isKinematic = true;
-        }
-        else
-        {
-            _isPush = true;
-            StartCoroutine(DiactivePhysics());
-        }
+        _direction.y = _gravityForce;
+        _controller.Move(_direction * Time.deltaTime);
+        _direction = Vector3.zero;
     }
 
     public void Push(Vector3 direction, float force)
     {
-
-        _rigidbody.isKinematic = false;
-        _rigidbody.AddForce(direction * force, ForceMode.Impulse);
-        _isPush = true;
+        _direction = direction;
     }
 
     public override SObjectData SaveData()
@@ -66,11 +46,11 @@ public class PushingObject : SavedObject, IPushObject
     public override void LoadData(SObjectData loadData)
     {
         if (loadData.SavingObjectID != _guid) return;
+        _controller.enabled = false;
         Vector3 loadPosition = loadData.VectorPatameters[0];
         loadPosition.y += _offsetY;
-        _rigidbody.isKinematic = true;
         transform.position = loadPosition;
         transform.rotation = loadData.Rotate;
-        _rigidbody.isKinematic = false;
+        _controller.enabled = true;
     }
 }

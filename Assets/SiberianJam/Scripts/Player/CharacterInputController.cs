@@ -25,7 +25,7 @@ public class CharacterInputController : SavedObject, ITake
         _inputControl.Gamplay.Interact.canceled += context => EndInteract();
         _inputControl.Gamplay.ChangeModul.started += context => ChangeModule();
         _inputControl.Gamplay.DopInteract.started += context => DopInteract();
-        //_inputControl.Gamplay.DopInteract.canceled += context => DopInteractEnd();
+        _inputControl.Gamplay.DopInteract.canceled += context => DopInteractEnd();
         _inputControl.Gamplay.EndGame.started += context => ShowPauseMenu();
         CheackActiveModule();
         if (_guid == string.Empty)

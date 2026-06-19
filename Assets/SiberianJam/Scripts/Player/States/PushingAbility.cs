@@ -19,8 +19,8 @@ public class PushingAbility : MonoBehaviour, IModuleAbility
     public void DopInteract(bool active)
     {
         _audioSource.PlayOneShot(_audio);
-        //_isPusshing = active;
-        _currentForce = _forcePush * -1 * 3;
+        _isPusshing = active;
+        _currentForce = _forcePush * -1;
         Push();
     }
 
@@ -38,7 +38,7 @@ public class PushingAbility : MonoBehaviour, IModuleAbility
         _visualComponent.SetActive(isActive);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (!_isPusshing) return;
 
@@ -55,9 +55,8 @@ public class PushingAbility : MonoBehaviour, IModuleAbility
         {
             if (hitObject.TryGetComponent<IPushObject>(out IPushObject pushObject))
             {
-                Vector3 offsetForce = Vector3.zero;
-                offsetForce.y += _forseYOffset;
-                pushObject.Push(transform.forward, _currentForce);     
+                Vector3 moveObject = transform.forward * _currentForce;
+                pushObject.Push(moveObject, 0);     
                 return;
             }
         }

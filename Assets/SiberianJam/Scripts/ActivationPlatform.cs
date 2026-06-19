@@ -6,6 +6,7 @@ public class ActivationPlatform : MonoBehaviour, IActivate
 {
     [SerializeField] private Material _standartMaterial;
     [SerializeField] private ETypeObject _typeActivateObject;
+    [SerializeField] private AudioSource _audioSource;
     [SerializeField] private List<SActivateInput> _inputSignals;
     [SerializeField] private List<SActivateOutput> _outputSignals;
 
@@ -23,7 +24,8 @@ public class ActivationPlatform : MonoBehaviour, IActivate
     {        
         if (collision.gameObject.TryGetComponent<IInteractObject>(out IInteractObject interactObject))
             if (interactObject.GetObjectType == _typeActivateObject)
-            {                
+            {
+              //  if (_typeActivateObject == ETypeObject.Push && !collision.GetComponent<Rigidbody>().isKinematic) return;
                 _hasRequiredObject = true;
                 if (!_isCanActivate) return;
                 if (_activateObjects.Count==0)
@@ -49,6 +51,9 @@ public class ActivationPlatform : MonoBehaviour, IActivate
 
     private void ChangeState(bool isActive)
     {
+       
+        if (isActive)
+            _audioSource.Play();
         foreach (var activateSignal in _outputSignals)
         {
             foreach (var visual in activateSignal._visualObjects)
