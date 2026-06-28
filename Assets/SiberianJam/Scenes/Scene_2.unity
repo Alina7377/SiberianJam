@@ -1163,6 +1163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a936e9af814e734ab64eb2de43146fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveSystem
+  _bootstrap: {fileID: 1557297054}
 --- !u!4 &1652775255 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3948888730682253680, guid: 70785e9c49fefe849ba6a60f8c1250b6, type: 3}
@@ -1391,7 +1392,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2746758782316296832, guid: 734ec6085e94cdb49836160842166559, type: 3}
       propertyPath: m_Size.x
-      value: 7.5
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2746758782316296832, guid: 734ec6085e94cdb49836160842166559, type: 3}
       propertyPath: m_Size.y
@@ -1407,7 +1408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2746758782316296832, guid: 734ec6085e94cdb49836160842166559, type: 3}
       propertyPath: m_Center.z
-      value: -5.47
+      value: -3.52
       objectReference: {fileID: 0}
     - target: {fileID: 4766907884595539506, guid: 734ec6085e94cdb49836160842166559, type: 3}
       propertyPath: m_Name

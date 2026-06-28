@@ -9,10 +9,12 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
     [SerializeField] private float _newRadius;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audio;
+    [SerializeField] private int _newLayer = 12;
     [SerializeField] private LayerMask _layerMaskChrackHit;
 
     private GameObject _dragObject = null;
     private float _baseSize = 0;
+    private int _startLayer; 
 
     private void DragObgect()
     {
@@ -20,8 +22,9 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
         {
             return;
         }
-
-        Collider[] hitObjects = Physics.OverlapSphere(_handPoint.position, _radiusHand);
+        
+        Collider[] hitObjects = Physics.OverlapBox(_handPoint.position, new Vector3(_radiusHand, 3f, _radiusHand),Quaternion.identity);
+        //Collider[] hitObjects = Physics.OverlapSphere(_handPoint.position, _radiusHand);
 
         if (hitObjects == null || hitObjects.Length == 0) return;
         foreach (var hitObject in hitObjects)
@@ -31,7 +34,10 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
                 _audioSource.PlayOneShot(_audio);
                 _baseSize = _characterController.radius;
                 interactObject.Interact();
+               
                 _dragObject = hitObject.gameObject;
+                _startLayer = _dragObject.layer;
+                _dragObject.layer = _newLayer;
                 _dragObject.transform.SetParent(_handPoint);
                 _dragObject.transform.localPosition = Vector3.zero;
                 _characterController.radius = _newRadius;
@@ -53,6 +59,7 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
             interactObject.Interact();
         
         _dragObject.transform.SetParent(null);
+        _dragObject.layer = _startLayer;
         _dragObject = null;
 
     }

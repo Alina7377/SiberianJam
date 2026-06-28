@@ -34,7 +34,6 @@ public class CharacterInputController : SavedObject, ITake
 
     private void ShowPauseMenu()
     {
-        Debug.Log(" Событие вызова меню " + _pauseMenu);
         if (_pauseMenu!= null)
             _pauseMenu.OnShowPauseMenu(true);
     }

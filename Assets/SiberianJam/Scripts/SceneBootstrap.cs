@@ -21,6 +21,8 @@ public class SceneBootstrap : MonoBehaviour, ISceneBoost
             return;
         }
 
+        playerPers.enabled = false;
+
         SSpawnPoint pointS = _savePoints[0];
 
         if (args.Count > 1 && args[1] != string.Empty)
@@ -39,5 +41,7 @@ public class SceneBootstrap : MonoBehaviour, ISceneBoost
         playerPers.enabled = true;
         if (_audioEnviroment != null)
             _audioEnviroment.Play();
+
+        playerPers.enabled = true;
     }
 }

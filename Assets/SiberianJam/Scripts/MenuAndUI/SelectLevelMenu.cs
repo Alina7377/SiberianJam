@@ -10,7 +10,26 @@ public class SelectLevelMenu: MonoBehaviour
     [SerializeField] private int _levelCount;
 
     private bool _isShow = false;
-    private List<GameObject> _selectionButtons = new List<GameObject>();    
+    private List<GameObject> _selectionButtons = new List<GameObject>();
+    private bool _isLastShow = false;
+
+    private void Start()
+    {
+        if (Settings.Instance != null)
+        {
+            Settings.Instance.OnOpenSettingMenu += OnHideMenuForSettingOn;
+            Settings.Instance.OnCloseSettingMenu += OnShowMenuForSettingOff;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (Settings.Instance != null)
+        {
+            Settings.Instance.OnOpenSettingMenu -= OnHideMenuForSettingOn;
+            Settings.Instance.OnCloseSettingMenu -= OnShowMenuForSettingOff;
+        }
+    }
 
     private void CreateButtons()
     {
@@ -56,5 +75,19 @@ public class SelectLevelMenu: MonoBehaviour
         _canvasSelectLevel.enabled = _isShow;
         if (_isShow)
             CreateButtons();
+    }
+
+    public void OnHideMenuForSettingOn()
+    {
+        if (!_isShow) return;
+        _isLastShow = true;
+        OnShowSelectLevelMenu();
+    }
+
+    public void OnShowMenuForSettingOff()
+    {
+        if (!_isLastShow) return;
+        OnShowSelectLevelMenu();
+        _isLastShow = false;
     }
 }

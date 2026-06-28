@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af07d416e759b35478b4f773aa6ce25b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFolow
-  _smoothness: 100
+  _smoothness: 2.5
   _targetObject: {fileID: 5000805449674337227}
 --- !u!82 &5492226403186590990
 AudioSource:

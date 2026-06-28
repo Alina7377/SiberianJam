@@ -633,12 +633,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggingAbility
   _handPoint: {fileID: 8089685789024353697}
-  _radiusHand: 0.5
+  _radiusHand: 0.3
   _visualComponent: {fileID: 8454963732602882784}
   _characterController: {fileID: 3258176521978476078}
   _newRadius: 0.65
   _audioSource: {fileID: 3340949905595919661}
   _audio: {fileID: 8300000, guid: c6f250394df54854d92fc1ddd8788313, type: 3}
+  _newLayer: 12
   _layerMaskChrackHit:
     serializedVersion: 2
     m_Bits: 1591
@@ -661,7 +662,7 @@ MonoBehaviour:
   _audio: {fileID: 8300000, guid: c6f250394df54854d92fc1ddd8788313, type: 3}
   _layerMaskChrackHit:
     serializedVersion: 2
-    m_Bits: 1591
+    m_Bits: 567
   _forcePush: 0.8
   _forseYOffset: 0.1
 --- !u!143 &3258176521978476078

@@ -1,9 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
     public static Settings Instance;
+
+    public event Action OnOpenSettingMenu;
+    public event Action OnCloseSettingMenu;
 
     [SerializeField] private Canvas _settingsScreen;
     [SerializeField] private Slider _effectSlider;
@@ -51,6 +55,8 @@ public class Settings : MonoBehaviour
         float volumeEff = _soundMaster.GetSoundVolume(_effectVolume);
         float volumeMus = _soundMaster.GetSoundVolume(_musicVolume);
 
+        OnOpenSettingMenu?.Invoke();
+
         _settingsScreen.enabled = true;
         _effectSlider.value = volumeEff <= _effectSlider.minValue ? _effectSlider.minValue : volumeEff;
         _musicSlider.value = volumeMus <= _musicSlider.minValue ? _musicSlider.minValue : volumeMus;
@@ -61,6 +67,8 @@ public class Settings : MonoBehaviour
         _settingsScreen.enabled = false;
         PlayerPrefs.SetFloat("EffectVolume", _soundMaster.GetSoundVolume(_effectVolume));
         PlayerPrefs.SetFloat("MusicVolume", _soundMaster.GetSoundVolume(_musicVolume));
+
+        OnCloseSettingMenu?.Invoke();
     }
 
     public void OnChangeEffectVolume()
@@ -81,6 +89,23 @@ public class Settings : MonoBehaviour
         _musicSlider.value = _defaulValue;
     }
 
-   
+    public void DisableEffect(bool isDisable)
+    {
+        if (isDisable)
+        {
+            _soundMaster.SetSoundVolume(_effectVolume, _effectSlider.minValue);
+        }
+        else
+        {
+            if (PlayerPrefs.HasKey("EffectVolume"))
+            {
+                _soundMaster.SetSoundVolume(_effectVolume, PlayerPrefs.GetFloat("EffectVolume"));
+            }
+            else
+            {
+                _soundMaster.SetSoundVolume(_effectVolume, _defaulValue);
+            }
+        }
+    }
 
 }
