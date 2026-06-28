@@ -1,3 +1,6 @@
+using SaveSystemData;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
@@ -9,6 +12,31 @@ public class PauseMenu : MonoBehaviour
     {
         if (_characterControl != null)
             _characterControl.SetPauseMenu(this);
+
+        if (Settings.Instance != null)
+        {
+            Settings.Instance.OnOpenSettingMenu += HideMenu;
+            Settings.Instance.OnCloseSettingMenu += ShowMenu;
+        }
+    }
+
+    private void ShowMenu()
+    {
+        _pauseMenuCanvas.enabled = true;
+    }
+
+    private void HideMenu()
+    {
+        _pauseMenuCanvas.enabled = false;
+    }
+
+    private void OnDisable()
+    {
+        if (Settings.Instance != null)
+        {
+            Settings.Instance.OnOpenSettingMenu -= HideMenu;
+            Settings.Instance.OnCloseSettingMenu -= ShowMenu;
+        }
     }
 
     public void OnShowPauseMenu(bool isShow)
@@ -23,6 +51,13 @@ public class PauseMenu : MonoBehaviour
     {
         if (Settings.Instance == null) return;
         Settings.Instance.OnShow();
+    }
+
+    public void OnRestartLastLevel()
+    {
+        if (SaveSystem.Instance == null) return;
+
+        SaveSystem.Instance.RestartLevl();
     }
 
     public void OnReturnMainMenu()

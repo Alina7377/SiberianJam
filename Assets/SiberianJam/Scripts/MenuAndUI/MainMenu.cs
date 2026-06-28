@@ -39,12 +39,7 @@ public class MainMenu : MonoBehaviour
         List<string> args = new List<string> { saveData.SceneName, saveData.LevelName, saveData.LevelName };
         SceneLoader.Instance.LoadeLevel("Level", args);
 
-    }
-
-    public void OnShowMenuSelectLevel()
-    {
- 
-    }
+    }    
 
     public void OnShowSettingMenu()
     {

@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SelectLevelButton : MonoBehaviour
 {
-    [SerializeField] private Text _outTextButton;
+    [SerializeField] private TMP_Text _outTextButton;
     [SerializeField] private Button _button;
     [SerializeField] private string _sceneName;
     [SerializeField] private string _levelName;

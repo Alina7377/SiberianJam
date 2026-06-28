@@ -98,4 +98,6 @@ public class SceneLoader : MonoBehaviour
     {
         _screenLoader.HideScreen();
     }
+
+    public CharacterController GetPlayerCharacter => _playerPers;
 }

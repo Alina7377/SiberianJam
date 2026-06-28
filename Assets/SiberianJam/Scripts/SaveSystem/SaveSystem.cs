@@ -2,18 +2,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using SaveSystemData;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SaveSystem : MonoBehaviour
 {
+    [SerializeField] private SceneBootstrap _bootstrap;
+
     private SavedObject[] _savedObjects;
 
     public static SaveSystem Instance;
 
     private string _nameScene;
+    private CameraFolow _camera;
 
     private void Awake()
     {
         Instance = this;
+        _camera = FindAnyObjectByType<CameraFolow>();
     }
 
     public void UpdateSaveObjectsList()
@@ -54,8 +59,22 @@ public class SaveSystem : MonoBehaviour
         PlayerPrefs.SetString(levelName, jsonData);
     }
 
+    private IEnumerator AudioOn()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (Settings.Instance != null)
+            Settings.Instance.DisableEffect(false);
+        if (_camera != null)
+            _camera.SetPlayingSmoothnes(true);
+    }
+
     public void LoadData(string levelName)
     {
+        if (_camera != null)
+            _camera.SetPlayingSmoothnes(false);
+        if (Settings.Instance != null)
+            Settings.Instance.DisableEffect(true);
+
         if (!PlayerPrefs.HasKey(levelName)) return;
 
         string levelData = PlayerPrefs.GetString(levelName);
@@ -66,10 +85,29 @@ public class SaveSystem : MonoBehaviour
             {                
                 obj.LoadData(dat);
             }
+
+        StartCoroutine(AudioOn());
+        
     }
 
     public void SetSceneName( string nameScene)
     {
         _nameScene = nameScene;
+    }
+
+    public void RestartLevl()
+    {
+        if (_bootstrap == null) return;
+        string levelName = PlayerPrefs.GetString("LastLvl");
+        SaveData saveData = JsonUtility.FromJson<SaveData>(PlayerPrefs.GetString(levelName));
+        List<string> args = new List<string> { saveData.SceneName, saveData.LevelName, saveData.LevelName };
+
+        if (saveData.SceneName != _nameScene)
+        {
+            SceneLoader.Instance.LoadeLevel("Level", args);
+            return;
+        }
+
+        _bootstrap.LoadArgs(args, SceneLoader.Instance.GetPlayerCharacter);
     }
 }
