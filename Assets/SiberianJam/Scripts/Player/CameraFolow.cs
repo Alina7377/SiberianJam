@@ -9,7 +9,7 @@ public class CameraFolow : MonoBehaviour
     private Vector3 _initalOffset;
     private Vector3 _cameraPosition;
 
-    private float _currentSmoothness = 2.5f;
+    [SerializeField] private float _currentSmoothness = 50f;
 
     private void Start()
     {

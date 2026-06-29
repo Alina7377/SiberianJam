@@ -643,7 +643,12 @@ PrefabInstance:
       propertyPath: _lvlName
       value: LvlEnd
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8960950477516207178, guid: 734ec6085e94cdb49836160842166559, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3466708338205966606, guid: 734ec6085e94cdb49836160842166559, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -902,6 +907,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1552128160}
     m_Modifications:
+    - target: {fileID: 396013049215574416, guid: 2198b8a5173229248b44e0b9756d7af3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3948888730682253680, guid: 2198b8a5173229248b44e0b9756d7af3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -945,6 +954,10 @@ PrefabInstance:
     - target: {fileID: 6767778084786619289, guid: 2198b8a5173229248b44e0b9756d7af3, type: 3}
       propertyPath: m_Name
       value: Level_Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415409242853960564, guid: 2198b8a5173229248b44e0b9756d7af3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1437,9 +1450,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8960950477516207178, guid: 734ec6085e94cdb49836160842166559, type: 3}
       propertyPath: _lvlName
-      value: Lvl11
+      value: Lvl0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8960950477516207178, guid: 734ec6085e94cdb49836160842166559, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3466708338205966606, guid: 734ec6085e94cdb49836160842166559, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

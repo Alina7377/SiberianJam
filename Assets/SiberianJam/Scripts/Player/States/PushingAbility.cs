@@ -18,7 +18,8 @@ public class PushingAbility : MonoBehaviour, IModuleAbility
 
     public void DopInteract(bool active)
     {
-        _audioSource.PlayOneShot(_audio);
+        if (active)
+            _audioSource.PlayOneShot(_audio);
         _isPusshing = active;
         _currentForce = _forcePush * -1;
         Push();

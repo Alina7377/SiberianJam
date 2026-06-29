@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnNewGame()
     {
-        List<string> args = new List<string> { _nameStartScene, _nameStartLevel};
+        List<string> args = new List<string> { _nameStartScene, _nameStartLevel, _nameStartLevel};
         SceneLoader.Instance.LoadeLevel("Level", args);
     }
 

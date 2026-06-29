@@ -15,6 +15,8 @@ public class SaveSystem : MonoBehaviour
     private string _nameScene;
     private CameraFolow _camera;
 
+    private string _restartLevel;
+
     private void Awake()
     {
         Instance = this;
@@ -41,14 +43,14 @@ public class SaveSystem : MonoBehaviour
               PlayerPrefs.SetString("LastLvl", levelName);*/
 
         PlayerPrefs.SetString("LastLvl", levelName);
-
+        _restartLevel = levelName;
         saveData.SceneName = _nameScene;
         saveData.LevelName = levelName;
 
         List<SObjectData> objectsData = new List<SObjectData>();
         foreach (var sObject in _savedObjects)
         {
-            if (sObject.gameObject == null) continue;
+            if (sObject == null) continue;
             objectsData.Add(sObject.SaveData());
         }
 
@@ -61,31 +63,44 @@ public class SaveSystem : MonoBehaviour
 
     private IEnumerator AudioOn()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         if (Settings.Instance != null)
             Settings.Instance.DisableEffect(false);
+        
+    }
+
+    private IEnumerator CameraUpdate()
+    {
+        yield return new WaitForSeconds(0.3f);        
         if (_camera != null)
             _camera.SetPlayingSmoothnes(true);
     }
 
     public void LoadData(string levelName)
     {
+        _restartLevel = levelName;
         if (_camera != null)
             _camera.SetPlayingSmoothnes(false);
         if (Settings.Instance != null)
             Settings.Instance.DisableEffect(true);
 
-        if (!PlayerPrefs.HasKey(levelName)) return;
+        if (!PlayerPrefs.HasKey(levelName))
+        {
+            StartCoroutine(CameraUpdate());
+            StartCoroutine(AudioOn());
+            return;
+        }
 
         string levelData = PlayerPrefs.GetString(levelName);
         SaveData saveData = JsonUtility.FromJson<SaveData>(levelData);
 
         foreach (var obj in _savedObjects)
             foreach (var dat in saveData.ObjectsData)
-            {                
+            {
                 obj.LoadData(dat);
             }
 
+        StartCoroutine(CameraUpdate());
         StartCoroutine(AudioOn());
         
     }
@@ -98,8 +113,11 @@ public class SaveSystem : MonoBehaviour
     public void RestartLevl()
     {
         if (_bootstrap == null) return;
-        string levelName = PlayerPrefs.GetString("LastLvl");
-        SaveData saveData = JsonUtility.FromJson<SaveData>(PlayerPrefs.GetString(levelName));
+
+        if (!PlayerPrefs.HasKey(_restartLevel)) return;
+
+        SaveData saveData = JsonUtility.FromJson<SaveData>(PlayerPrefs.GetString(_restartLevel));
+
         List<string> args = new List<string> { saveData.SceneName, saveData.LevelName, saveData.LevelName };
 
         if (saveData.SceneName != _nameScene)

@@ -33,7 +33,8 @@ public class SavePoint : SavedObject
     private void OnTriggerEnter(Collider other)
     {
         _collider.enabled = false;
-        _audioSource.Play();
+        if (_audioSource!=null)
+            _audioSource.Play();
         SaveSystem.Instance.SavingData(_lvlName);
     }
 }

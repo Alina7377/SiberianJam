@@ -33,13 +33,13 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
             {
                 _audioSource.PlayOneShot(_audio);
                 _baseSize = _characterController.radius;
-                interactObject.Interact();
-               
+
                 _dragObject = hitObject.gameObject;
                 _startLayer = _dragObject.layer;
                 _dragObject.layer = _newLayer;
-                _dragObject.transform.SetParent(_handPoint);
-                _dragObject.transform.localPosition = Vector3.zero;
+
+                interactObject.Interact(_handPoint);
+               
                 _characterController.radius = _newRadius;
                 return;
             }
@@ -56,9 +56,8 @@ public class DraggingAbility : MonoBehaviour, IModuleAbility
             _characterController.radius = _baseSize;
 
         if (_dragObject.TryGetComponent<IDragObject>(out IDragObject interactObject))
-            interactObject.Interact();
+            interactObject.Interact(null);
         
-        _dragObject.transform.SetParent(null);
         _dragObject.layer = _startLayer;
         _dragObject = null;
 

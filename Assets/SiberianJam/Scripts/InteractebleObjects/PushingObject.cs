@@ -34,6 +34,7 @@ public class PushingObject : SavedObject, IPushObject
 
     public override SObjectData SaveData()
     {
+
         SObjectData saveData = new SObjectData();
 
         saveData.SavingObjectID = _guid;
