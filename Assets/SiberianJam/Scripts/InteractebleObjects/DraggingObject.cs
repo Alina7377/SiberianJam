@@ -1,4 +1,5 @@
 using SaveSystemData;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,8 +8,11 @@ public class DraggingObject : SavedObject, IDragObject
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private ETypeObject _type;
     [SerializeField] private float _offsetY = 0.371f;
-
+   
     public ETypeObject GetObjectType => _type;
+
+    private Transform _parentPosition;
+    private bool _isDrag;
 
     private void Start()
     {
@@ -16,8 +20,26 @@ public class DraggingObject : SavedObject, IDragObject
             _guid = CreatHashID(gameObject.name, transform.position);
     }
 
-    public void Interact()
+    private void Update()
     {
+        if (_isDrag)
+            Movement();
+        
+    }
+
+    private void Movement()
+    {
+        transform.position = _parentPosition.position;
+    }
+
+    public void Interact(Transform parentTransform)
+    {
+        if (parentTransform!=null)
+            _isDrag = true;
+        else
+            _isDrag = false;
+
+        _parentPosition = parentTransform;
         _rigidbody.isKinematic = !_rigidbody.isKinematic;
     }
 

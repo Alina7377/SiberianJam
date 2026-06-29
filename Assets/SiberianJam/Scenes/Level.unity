@@ -1370,13 +1370,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7796052999549613132, guid: 0fded47d9b3c55e46b1c01eedccd8cb3, type: 3}
       propertyPath: _smoothness
-      value: 8
+      value: 9.3
       objectReference: {fileID: 0}
     - target: {fileID: 9223177769663728564, guid: 0fded47d9b3c55e46b1c01eedccd8cb3, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5492226403186590990, guid: 0fded47d9b3c55e46b1c01eedccd8cb3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

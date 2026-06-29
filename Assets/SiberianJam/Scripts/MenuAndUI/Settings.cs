@@ -68,6 +68,8 @@ public class Settings : MonoBehaviour
         PlayerPrefs.SetFloat("EffectVolume", _soundMaster.GetSoundVolume(_effectVolume));
         PlayerPrefs.SetFloat("MusicVolume", _soundMaster.GetSoundVolume(_musicVolume));
 
+        PlayerPrefs.Save();
+
         OnCloseSettingMenu?.Invoke();
     }
 
