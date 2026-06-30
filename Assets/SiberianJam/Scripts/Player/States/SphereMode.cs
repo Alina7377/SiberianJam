@@ -1,10 +1,11 @@
 using UnityEngine;
 
 public class SphereMode : MonoBehaviour, IOperatingMode
-{    
+{
     [SerializeField] private float _speed;
     [SerializeField] private float _speedRotation;
     [SerializeField] private float _maxDistance;
+    [SerializeField] private float _smoothnesMovement;
     [SerializeField] private Animator _mainAnimator;
     [SerializeField] private float _gravityForce;
     [SerializeField] private int _layerNum = 3;
@@ -12,19 +13,35 @@ public class SphereMode : MonoBehaviour, IOperatingMode
     private CharacterController _characterController;
     private Camera _camera;
 
-    private Vector3 _mausePosition;     
+    private Vector3 _mausePosition;
+    private Vector3 _currentPos = Vector3.zero;
+    private Vector3 _targetPos = Vector3.zero;
 
     public void Activity(bool isActive)
     {
         if (isActive)
         {
-            Vector3 sizeShpere= Vector3.zero;
+            Vector3 sizeShpere = Vector3.zero;
             _characterController.center = sizeShpere;
             _characterController.height = 0.3f;
             _characterController.radius = 0.3f;
         }
     }
 
+    private void Update()
+    {
+        if (_characterController.enabled)
+            Movement();
+    }
+
+    private void Movement()
+    {
+        _currentPos = Vector3.Lerp(_currentPos, _targetPos, _smoothnesMovement * Time.deltaTime);
+
+        Vector3 pos = _currentPos + new Vector3(0, _gravityForce * Time.deltaTime, 0);
+
+        _characterController.Move(pos);
+    }
     public void Move(Vector2 direction)
     {
         float distance = Vector3.Distance(_characterController.transform.position, _mausePosition);
@@ -35,10 +52,7 @@ public class SphereMode : MonoBehaviour, IOperatingMode
         speed = Mathf.Min(_speed, speed);
 
         Vector3 animatePos = _characterController.transform.TransformDirection(new Vector3(0, 0, direction.y)).normalized;
-        Vector3 pos = animatePos * speed * Time.deltaTime;
-
-        pos += new Vector3(0, _gravityForce * Time.deltaTime, 0);
-        _characterController.Move(pos);
+        _targetPos = animatePos * speed * Time.deltaTime;
     }
 
     public void Rotate(Vector2 look)
