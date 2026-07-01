@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: M_Door
+    second: {fileID: 2100000, guid: aa01395f581d5f843888b6f7c232d700, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: M_Main_core
     second: {fileID: 2100000, guid: 4a885ba7f436a6643a60ba67ffc0c7d6, type: 2}
   - first:

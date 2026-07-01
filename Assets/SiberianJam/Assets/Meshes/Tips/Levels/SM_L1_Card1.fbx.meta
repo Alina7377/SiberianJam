@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 99e63a797586b204ba2de08d5c38c372
+guid: 02845f195ca4ce340826dbc9b9226ed0
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,18 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Door
-    second: {fileID: 2100000, guid: aa01395f581d5f843888b6f7c232d700, type: 2}
+      name: M_Metalness
+    second: {fileID: 2100000, guid: 69cbed0cc30630c44aaddb75a5237876, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Main_core
-    second: {fileID: 2100000, guid: 4a885ba7f436a6643a60ba67ffc0c7d6, type: 2}
+      name: M_Obstacle_Pink
+    second: {fileID: 2100000, guid: 5136cd15efc520141b66c3ebe889c5f5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Need_Power
-    second: {fileID: 2100000, guid: 7af6de6126493a7438ed6c643b58f42c, type: 2}
+      name: M_Tips
+    second: {fileID: 2100000, guid: f83d953da9f5acf4b97bdd16e7b6fa33, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
