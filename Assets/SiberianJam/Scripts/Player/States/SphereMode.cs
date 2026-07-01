@@ -17,8 +17,11 @@ public class SphereMode : MonoBehaviour, IOperatingMode
     private Vector3 _currentPos = Vector3.zero;
     private Vector3 _targetPos = Vector3.zero;
 
+    private bool _isActive = true;
+
     public void Activity(bool isActive)
     {
+        _isActive = isActive;
         if (isActive)
         {
             Vector3 sizeShpere = Vector3.zero;
@@ -26,11 +29,16 @@ public class SphereMode : MonoBehaviour, IOperatingMode
             _characterController.height = 0.3f;
             _characterController.radius = 0.3f;
         }
+        else
+        {
+            _currentPos = Vector3.zero;
+            _targetPos = Vector3.zero;
+        }
     }
 
     private void Update()
     {
-        if (_characterController.enabled)
+        if (_isActive && _characterController.enabled)
             Movement();
     }
 

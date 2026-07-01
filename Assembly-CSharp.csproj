@@ -68,6 +68,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\SaveSystem\SavePoint.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\InteractebleObjects\PushingObject.cs" />
+    <Compile Include="Assets\SiberianJam\Scripts\SoundSystem.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\TakebleModul.cs" />
     <Compile Include="Assets\SiberianJam\Scripts\Player\States\IOperatingMode.cs" />

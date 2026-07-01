@@ -1,8 +1,9 @@
+using SaveSystemData;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivationPlatform : MonoBehaviour, IActivate
+public class ActivationPlatform : SavedObject, IActivate
 {
     [SerializeField] private Material _standartMaterial;
     [SerializeField] private ETypeObject _typeActivateObject;
@@ -27,6 +28,7 @@ public class ActivationPlatform : MonoBehaviour, IActivate
             {
                 _hasRequiredObject = true;
                 if (!_isCanActivate) return;
+       
                 if (_activateObjects.Count == 0)
                 {
                     _audioSource.Play();
@@ -89,6 +91,16 @@ public class ActivationPlatform : MonoBehaviour, IActivate
         _isCanActivate = isAllActive;
         if (_hasRequiredObject)
             ChangeState(_isCanActivate);
+    }
+
+    public override SObjectData SaveData()
+    {
+        return new SObjectData();
+    }
+
+    public override void LoadData(SObjectData loadData)
+    {
+        _activateObjects.Clear();
     }
 }
 
