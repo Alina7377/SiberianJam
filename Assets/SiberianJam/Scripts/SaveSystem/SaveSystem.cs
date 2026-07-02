@@ -48,11 +48,15 @@ public class SaveSystem : MonoBehaviour
         saveData.LevelName = levelName;
 
         List<SObjectData> objectsData = new List<SObjectData>();
-        foreach (var sObject in _savedObjects)
+        for (int i = 0; i < _savedObjects.Length; i++)
         {
-            if (sObject == null) continue;
-            objectsData.Add(sObject.SaveData());
+            if (_savedObjects[i] == null) continue;
+            objectsData.Add(_savedObjects[i].SaveData());
         }
+        /*foreach (var sObject in _savedObjects)
+        {
+            
+        }*/
 
         saveData.ObjectsData = new List<SObjectData> (objectsData);
 

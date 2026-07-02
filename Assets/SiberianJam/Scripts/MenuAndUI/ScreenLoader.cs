@@ -6,6 +6,13 @@ public class ScreenLoader : MonoBehaviour
     [SerializeField] private Canvas _canvasLoader;
     [SerializeField] private Canvas _endGameMenu;
 
+    private CharacterInputController _character;
+
+    private void Start()
+    {
+        
+    }
+
     public void ShowScreen() 
     {
         _canvasLoader.enabled = true;
@@ -21,6 +28,10 @@ public class ScreenLoader : MonoBehaviour
     public void ShowEndGame()
     {
         _endGameMenu.enabled = true;
+        if (_character == null)
+            _character = FindAnyObjectByType<CharacterInputController>();
+        _character.ActiveControl(false);
+        
     }
 
     public void OnReturnMainMenu()
