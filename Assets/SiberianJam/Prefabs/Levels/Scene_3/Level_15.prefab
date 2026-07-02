@@ -17565,6 +17565,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1665694661527827783, guid: 9d5d69a574df5834895321867fb39432, type: 3}
   m_PrefabInstance: {fileID: 4610696790088605471}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3244681232833451571 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1367704704547146028, guid: 9d5d69a574df5834895321867fb39432, type: 3}
+  m_PrefabInstance: {fileID: 4610696790088605471}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b118b9c7325d72b40ac8ffc123aa7a08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lampa
 --- !u!114 &6750211673503567371 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7084704882596499732, guid: 9d5d69a574df5834895321867fb39432, type: 3}
@@ -28118,7 +28129,7 @@ PrefabInstance:
     - target: {fileID: 5416258784794884224, guid: 62a2478b8de1a5841b801cff2c387ecb, type: 3}
       propertyPath: '_outputSignals.Array.data[0]._activateObjects.Array.data[1]'
       value: 
-      objectReference: {fileID: 875239024583801655}
+      objectReference: {fileID: 3244681232833451571}
     - target: {fileID: 5416258784794884224, guid: 62a2478b8de1a5841b801cff2c387ecb, type: 3}
       propertyPath: '_outputSignals.Array.data[0]._activateObjects.Array.data[2]'
       value: 
