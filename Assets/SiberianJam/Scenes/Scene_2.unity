@@ -700,6 +700,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 583102853}
     m_Modifications:
+    - target: {fileID: 396013049215574416, guid: 2198b8a5173229248b44e0b9756d7af3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3948888730682253680, guid: 2198b8a5173229248b44e0b9756d7af3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1188,8 +1192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundSystem
   _audioSource: {fileID: 1557297053}
   _musiks:
-  - {fileID: 8300000, guid: d6b3a72309acd0f46b6501de75ed0f1b, type: 3}
   - {fileID: 8300000, guid: 45854f61d1f5a014eaf826fcb6409f8d, type: 3}
+  - {fileID: 8300000, guid: d6b3a72309acd0f46b6501de75ed0f1b, type: 3}
 --- !u!4 &1652775255 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3948888730682253680, guid: 70785e9c49fefe849ba6a60f8c1250b6, type: 3}

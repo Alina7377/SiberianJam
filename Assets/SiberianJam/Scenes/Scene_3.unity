@@ -914,8 +914,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundSystem
   _audioSource: {fileID: 1198812074}
   _musiks:
-  - {fileID: 8300000, guid: 45854f61d1f5a014eaf826fcb6409f8d, type: 3}
   - {fileID: 8300000, guid: 79443cd776e41f14ebcc165a302dc90b, type: 3}
+  - {fileID: 8300000, guid: 45854f61d1f5a014eaf826fcb6409f8d, type: 3}
 --- !u!1001 &1294243939
 PrefabInstance:
   m_ObjectHideFlags: 0

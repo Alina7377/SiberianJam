@@ -17,8 +17,6 @@ public class Settings : MonoBehaviour
     private const string _effectVolume = "EffectsVolume";
     private const string _musicVolume = "MusicVolume";
 
-    private const float _defaulValue = 0;
-
     private void Awake()
     {
         if (Instance != null)
@@ -85,10 +83,10 @@ public class Settings : MonoBehaviour
 
     public void OnSetDefaultValue()
     {
-        _soundMaster.SetSoundVolume(_effectVolume, _defaulValue);
-        _soundMaster.SetSoundVolume(_musicVolume, _defaulValue);
-        _effectSlider.value = _defaulValue;
-        _musicSlider.value = _defaulValue;
+        _soundMaster.SetSoundVolume(_effectVolume, _effectSlider.maxValue);
+        _soundMaster.SetSoundVolume(_musicVolume, _musicSlider.maxValue);
+        _effectSlider.value = _effectSlider.maxValue;
+        _musicSlider.value = _musicSlider.maxValue;
     }
 
     public void DisableEffect(bool isDisable)
@@ -105,7 +103,7 @@ public class Settings : MonoBehaviour
             }
             else
             {
-                _soundMaster.SetSoundVolume(_effectVolume, _defaulValue);
+                _soundMaster.SetSoundVolume(_effectVolume, _effectSlider.maxValue);
             }
         }
     }
