@@ -1746,7 +1746,7 @@ MonoBehaviour:
   _canvasSelectLevel: {fileID: 635826706}
   _buttonPref: {fileID: 4380587107067508431, guid: 867817c8ef256c841ac983b796259fa6, type: 3}
   _buttonContainer: {fileID: 342545662}
-  _levelCount: 100
+  _levelCount: 15
 --- !u!114 &635826704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3552,9 +3552,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1074381829}
   m_Direction: 0
   m_MinValue: -21
-  m_MaxValue: -10
+  m_MaxValue: -4
   m_WholeNumbers: 0
-  m_Value: -10
+  m_Value: -6
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -4290,7 +4290,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1949552352}
   m_Direction: 0
   m_MinValue: -21
-  m_MaxValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: -7.14
   m_OnValueChanged:

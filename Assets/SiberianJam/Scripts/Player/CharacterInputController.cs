@@ -33,7 +33,7 @@ public class CharacterInputController : SavedObject, ITake
     }
 
     private void ShowPauseMenu()
-    {
+    { 
         if (_pauseMenu!= null)
             _pauseMenu.OnShowPauseMenu(true);
     }
