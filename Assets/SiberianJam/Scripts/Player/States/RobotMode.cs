@@ -21,7 +21,7 @@ public class RobotMode : MonoBehaviour, IOperatingMode
         }
     }
 
-    public void Move(Vector2 direction)
+    public void Move(Vector3 direction)
     {
         Vector3 pos = (new Vector3(direction.x, 0, direction.y) * _speed * Time.deltaTime);
 
@@ -29,15 +29,9 @@ public class RobotMode : MonoBehaviour, IOperatingMode
         _characterController.Move(pos);
     }
 
-    public void Rotate(Vector2 look)
+    public void Rotate(Vector3 look)
     {
-        if (_camera == null) return;
-
-        Plane playerPlane = new Plane(Vector3.up, _characterController.transform.position);
-        Ray ray = _camera.ScreenPointToRay(look);
-        if (!playerPlane.Raycast(ray, out var hitDistance)) return;
-
-        _characterController.transform.forward = ray.GetPoint(hitDistance) - _characterController.transform.position;
+        _characterController.transform.forward = look - _characterController.transform.position;
     }
 
     public void SetCamera(Camera camera)

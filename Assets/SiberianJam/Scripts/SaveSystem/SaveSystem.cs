@@ -53,10 +53,6 @@ public class SaveSystem : MonoBehaviour
             if (_savedObjects[i] == null) continue;
             objectsData.Add(_savedObjects[i].SaveData());
         }
-        /*foreach (var sObject in _savedObjects)
-        {
-            
-        }*/
 
         saveData.ObjectsData = new List<SObjectData> (objectsData);
 

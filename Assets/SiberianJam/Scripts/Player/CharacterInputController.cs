@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CharacterInputController : SavedObject, ITake
 {
+    [SerializeField] private InfoMenuControl _infoMenu;
+    [SerializeField] private List<PlayerInputVar> _inputVariables;
     [SerializeField] private CharacterState _stateCharacter;
     [SerializeField] private List<SAbility> _interactAbilitys;
     [SerializeField] private AudioSource _audioSource;
@@ -20,44 +22,36 @@ public class CharacterInputController : SavedObject, ITake
     private void Awake()
     {
         _inputControl = new PlayerController();
-        _inputControl.Gamplay.ChangeMode.started += context => ChangeMode();
-        _inputControl.Gamplay.Interact.started += context => Interact();
-        _inputControl.Gamplay.Interact.canceled += context => EndInteract();
-        _inputControl.Gamplay.ChangeModul.started += context => ChangeModule();
-        _inputControl.Gamplay.DopInteract.started += context => DopInteract();
-        _inputControl.Gamplay.DopInteract.canceled += context => DopInteractEnd();
-        _inputControl.Gamplay.EndGame.started += context => ShowPauseMenu();
+        foreach (var input in _inputVariables)
+        {
+            input.ÑonfigureInput(_inputControl, this);
+        }     
+
         CheackActiveModule();
         if (_guid == string.Empty)
             _guid = CreatHashID(gameObject.name, transform.position);
     }
 
-    private void ShowPauseMenu()
+    public void ShowPauseMenu()
     { 
         if (_pauseMenu!= null)
             _pauseMenu.OnShowPauseMenu(true);
     }
 
-    private void DopInteract()
+    public void DopInteract(bool isActive)
     {
 
-        if (_stateCharacter.IsShpereMode) return;
+        if (isActive && _stateCharacter.IsShpereMode) return;
 
         if (_activeModule is IModuleAbility ability)
-            ability.DopInteract(true);
+            ability.DopInteract(isActive);
     }
 
-    private void DopInteractEnd()
-    {
-        if (_activeModule is IModuleAbility ability)
-            ability.DopInteract(false);
-    }
-
-    private void ChangeModule()
+    public void ChangeModule()
     {       
         if (_stateCharacter.IsShpereMode) return;
         if (_interactAbilitys.Count == 0) return;
-        EndInteract();
+        Interact(false);
         if (_activeModule != null)
             _activeModule.SetActiveVisual(false);
         _activeAbylityNum++;
@@ -66,6 +60,7 @@ public class CharacterInputController : SavedObject, ITake
         if (_interactAbilitys[_activeAbylityNum].IsCanUse)
         {
             SetAbility(_interactAbilitys[_activeAbylityNum].AbilityObject);
+            _infoMenu.CurrentModule(_activeAbylityNum);
         } 
         else
         {
@@ -77,31 +72,26 @@ public class CharacterInputController : SavedObject, ITake
                 if (_interactAbilitys[_activeAbylityNum].IsCanUse)
                 {
                     SetAbility(_interactAbilitys[_activeAbylityNum].AbilityObject);
+                    _infoMenu.CurrentModule(_activeAbylityNum);
                 }
             }
         }
     }
 
-    private void Interact()
+    public void Interact(bool isActive)
     {
-        if (_stateCharacter.IsShpereMode) return;
+        if (isActive && _stateCharacter.IsShpereMode) return;
 
         if (_activeModule is IModuleAbility ability)
-            ability.Interact(true);
+            ability.Interact(isActive);
     }
 
-    private void EndInteract()
+    public void ChangeMode()
     {
-        if (_activeModule is IModuleAbility ability)
-            ability.Interact(false);
-    }
-
-    private void ChangeMode()
-    {
-        if (_activeModule == null) return;
+        if (_activeModule == null && _stateCharacter.IsShpereMode) return;
         if (_stateCharacter.IsShpereMode && !_canUseInteractMode)
             return;
-        EndInteract();
+        Interact(false);
         if (_activeModule != null)
             _activeModule.SetActiveVisual(false);
         
@@ -110,7 +100,16 @@ public class CharacterInputController : SavedObject, ITake
         
         if (!_stateCharacter.IsShpereMode && _activeModule!=null)
             _activeModule.SetActiveVisual(true);
+        if (_stateCharacter.IsShpereMode)
+        {           
+            _infoMenu.CurrentModule(-1);
+        }
+        else
+        {
+            _infoMenu.CurrentModule(_activeAbylityNum);
+        }
 
+        _infoMenu.CurrentRegime(_stateCharacter.IsShpereMode);
     }
 
     private void OnEnable()
@@ -123,21 +122,25 @@ public class CharacterInputController : SavedObject, ITake
         _inputControl.Disable();
     }
     
-    private void Update()
+    public void ReadValues(Vector2 movement, Vector3 movementSphere, Vector3 rotation)
     {
-        _stateCharacter.Movement(_inputControl.Gamplay.MovementStandart.ReadValue<Vector2>());
-        _stateCharacter.MovementShpere(_inputControl.Gamplay.MovementSphere.ReadValue<Vector2>());
-        _stateCharacter.Rotation(_inputControl.Gamplay.Look.ReadValue<Vector2>());
+        _stateCharacter.Movement(movement);
+        _stateCharacter.MovementShpere(movementSphere);
+        _stateCharacter.Rotation(rotation);
     }
 
     private void CheackActiveModule()
     {
         if (_activeModule != null) return;
+        int ind = -1;
         foreach (var ability in _interactAbilitys)
         {
+            ind++;
             if (ability.IsCanUse)
             {
                 SetAbility(ability.AbilityObject);
+                _infoMenu.CurrentModule(ind);
+                Debug.Log("Àêòèâðèóåì ìîäóëü");
                 return;
             }
         }
@@ -173,6 +176,14 @@ public class CharacterInputController : SavedObject, ITake
 
         if (!_stateCharacter.IsShpereMode && _activeModule != null)
             _activeModule.SetActiveVisual(true);
+
+        _infoMenu.CanUseChangeRegim(true, true);
+
+        if (num > 0 && !_stateCharacter.IsShpereMode)
+            _infoMenu.CanUseChangeModule(true);
+
+        if (!_stateCharacter.IsShpereMode)
+            _infoMenu.CurrentModule(num);
     }
 
     public void SetCanUseInteractionMode(bool canUse, GameObject volumeObject)
@@ -181,10 +192,17 @@ public class CharacterInputController : SavedObject, ITake
             _volumes.Add(volumeObject);
         else
             _volumes.Remove(volumeObject);
+
         if (canUse && _volumes.Count == 0)
+        { 
             _canUseInteractMode = true;
+            _infoMenu.CanUseChangeRegim(true,false);
+        }
         else
+        {
             _canUseInteractMode = false;
+            _infoMenu.CanUseChangeRegim(false,false);
+        }
 
     }
 
@@ -207,13 +225,42 @@ public class CharacterInputController : SavedObject, ITake
     {
         if (loadData.SavingObjectID != _guid) return;
 
+        if (!_stateCharacter.IsShpereMode)
+        {
+            _stateCharacter.ChangeState();
+            if (_activeModule != null)
+                _activeModule.SetActiveVisual(false);
+        }
+
+        _activeModule = null;
+        _activeAbylityNum = -1;
+        _infoMenu.CurrentModule(-1);
+
         for (int i = 0; i < loadData.BoolParamters.Count; i++)
         {
             SAbility changeAbility = _interactAbilitys[i];            
             changeAbility.IsCanUse = loadData.BoolParamters[i];
             _interactAbilitys[i] = changeAbility;
+            if (changeAbility.IsCanUse)
+            {
+                if (_activeModule == null)
+                {
+                    _activeAbylityNum = i;
+                    if (changeAbility.AbilityObject is IModuleAbility ability)
+                        _activeModule = ability;
+                }
+                _infoMenu.CurrentModule(i);
+            }
         }
-        CheackActiveModule();
+
+        _infoMenu.CurrentRegime(_stateCharacter.IsShpereMode);
+
+        if (_activeAbylityNum > -1)
+            _infoMenu.CanUseChangeRegim(true, false);
+        else
+            _infoMenu.CanUseChangeRegim(false, false);
+
+
     }
 
     public void ActiveControl(bool isActive)
@@ -227,6 +274,11 @@ public class CharacterInputController : SavedObject, ITake
     public void SetPauseMenu(PauseMenu pauseMenu)
     {
         _pauseMenu = pauseMenu;
+    }
+
+    public void ShowInfo()
+    {
+        _infoMenu.ChangeShow();
     }
 }
 
