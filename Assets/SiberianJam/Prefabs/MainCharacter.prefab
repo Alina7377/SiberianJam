@@ -520,6 +520,7 @@ GameObject:
   - component: {fileID: 8503750584546085107}
   - component: {fileID: 3258176521978476078}
   - component: {fileID: 3340949905595919661}
+  - component: {fileID: 2335248549478663584}
   m_Layer: 3
   m_Name: MainCharacter
   m_TagString: Untagged
@@ -559,6 +560,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterInputController
   _guid: 
+  _inputVariables:
+  - {fileID: 2335248549478663584}
   _stateCharacter: {fileID: 6869934669934650454}
   _interactAbilitys:
   - AbilityObject: {fileID: 2491545061778529340}
@@ -601,6 +604,7 @@ MonoBehaviour:
   _speed: 5
   _speedRotation: 0
   _maxDistance: 4
+  _smoothnesMovement: 0
   _mainAnimator: {fileID: 3392759516049302637}
   _gravityForce: -2
   _layerNum: 3
@@ -787,6 +791,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2335248549478663584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871958249919311972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5fc73cc54dfae4681bb12dc4be04fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeybordAndMauseInput
 --- !u!1 &9207083906478358237
 GameObject:
   m_ObjectHideFlags: 0

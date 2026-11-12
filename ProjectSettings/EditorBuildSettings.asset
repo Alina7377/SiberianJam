@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/PluginYourGames/Example/Scenes/ExampleYG2.unity
+    guid: e49bf7e58fdb4db4c9df51f0ddb8f327
+  - enabled: 1
     path: Assets/SiberianJam/Scenes/MainMenu.unity
     guid: 0e55a939c79466744b1893e5b16d5f6b
   - enabled: 1

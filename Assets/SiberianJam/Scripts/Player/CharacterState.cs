@@ -38,7 +38,7 @@ public class CharacterState : MonoBehaviour
                 Debug.Log("Некорректен режим работы робота");
         }
     }
-    public void MovementShpere(Vector2 direction) 
+    public void MovementShpere(Vector3 direction) 
     {
         if (!_characterControler.enabled) return;
         if (_isShpereMode && _stateMods.Count > 0)
@@ -50,7 +50,7 @@ public class CharacterState : MonoBehaviour
         }
     } 
 
-    public void Rotation(Vector2 look)
+    public void Rotation(Vector3 look)
     {
         if (!_characterControler.enabled) return;
         if (_isShpereMode)
@@ -65,6 +65,7 @@ public class CharacterState : MonoBehaviour
 
     public void ChangeState()
     {
+
         if (_isShpereMode)
         {
             _stateMods[0].Activity(false);
@@ -84,7 +85,7 @@ public class CharacterState : MonoBehaviour
         if (_isShpereMode)
         {
             _stateMods[0].Activity(true);
-            gameObject.layer = 3;
+            gameObject.layer = 3;            
         }
 
         else

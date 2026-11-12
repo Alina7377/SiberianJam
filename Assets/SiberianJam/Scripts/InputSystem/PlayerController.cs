@@ -89,7 +89,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
     ""name"": ""PlayerController"",
     ""maps"": [
         {
-            ""name"": ""Gamplay"",
+            ""name"": ""KeybordMause"",
             ""id"": ""97983c52-5ea2-407c-8ef3-dc1d31eb8b82"",
             ""actions"": [
                 {
@@ -159,6 +159,15 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""name"": ""EndGame"",
                     ""type"": ""Button"",
                     ""id"": ""0f078c87-e2c7-4bb7-907e-9e27ad8b6bae"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShowInfoHint"",
+                    ""type"": ""Button"",
+                    ""id"": ""b68eed63-4c0a-43a1-8d50-cc7943a26cbb"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -319,27 +328,306 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""action"": ""EndGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ba2be28-c3c5-4486-b63f-4ad2390c0c7b"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowInfoHint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Gamepade"",
+            ""id"": ""4f7b64be-d5aa-45cc-8c46-2dcf9fe98852"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""1965dfa0-c35a-4450-a741-92c6e2ae7078"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""6db590e8-7c38-4385-976c-c8bacb0de3c0"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChangeMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""21121087-1316-4305-8276-7014ddda30ec"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb576c96-8f4c-4fe8-b82b-12a3f2988103"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MovementSphere"",
+                    ""type"": ""Value"",
+                    ""id"": ""b77fe026-91be-45a6-9fad-42d51bbcc534"",
+                    ""expectedControlType"": ""Analog"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChangeModul"",
+                    ""type"": ""Button"",
+                    ""id"": ""13f7a8cb-5bbb-43ac-8623-0b54d5cec4fe"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DopInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""a30fe96e-0a2c-40df-b8ef-22656d38fed3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EndGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""df3812ca-a05e-4709-b459-1ce1db21ca72"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""1de14dd2-a291-47dc-a102-32f0a5c91df0"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""60db2069-ad32-434d-b7a0-cdad0d794665"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""edbc4aae-b772-4eed-94d9-57ee540ed293"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""8547e77b-18e0-4844-9f76-341c763b8a3c"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""71a61aaa-35f7-46d2-b922-70ace286b9d0"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e3a14ec-e53f-4f3c-b589-cf16d30e9864"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ec7e7c1-0be5-48da-b9ef-4c05e08a4bc4"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c028e32-a316-41d7-8e5e-9cd697381109"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeModul"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b397dd2-02cd-4373-9c6d-56aa115c77ae"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DopInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4519d008-e2f1-4a06-98cd-2d2ad8980a4c"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EndGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""493e7faf-b43c-4964-97b8-92458c6a5143"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementSphere"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""5caeaa20-74da-4a45-ac95-086824784a54"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""5a2a258c-b578-4d89-b6de-d799d3fa254e"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""9b106788-570f-4f5a-a769-f7460a7bcf22"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""5fd892bf-ffde-48e8-8016-c372096365e2"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""1c9e7d1c-30f3-437f-ae0a-e6dfa04310a6"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // Gamplay
-        m_Gamplay = asset.FindActionMap("Gamplay", throwIfNotFound: true);
-        m_Gamplay_MovementStandart = m_Gamplay.FindAction("MovementStandart", throwIfNotFound: true);
-        m_Gamplay_Look = m_Gamplay.FindAction("Look", throwIfNotFound: true);
-        m_Gamplay_ChangeMode = m_Gamplay.FindAction("ChangeMode", throwIfNotFound: true);
-        m_Gamplay_Interact = m_Gamplay.FindAction("Interact", throwIfNotFound: true);
-        m_Gamplay_MovementSphere = m_Gamplay.FindAction("MovementSphere", throwIfNotFound: true);
-        m_Gamplay_ChangeModul = m_Gamplay.FindAction("ChangeModul", throwIfNotFound: true);
-        m_Gamplay_DopInteract = m_Gamplay.FindAction("DopInteract", throwIfNotFound: true);
-        m_Gamplay_EndGame = m_Gamplay.FindAction("EndGame", throwIfNotFound: true);
+        // KeybordMause
+        m_KeybordMause = asset.FindActionMap("KeybordMause", throwIfNotFound: true);
+        m_KeybordMause_MovementStandart = m_KeybordMause.FindAction("MovementStandart", throwIfNotFound: true);
+        m_KeybordMause_Look = m_KeybordMause.FindAction("Look", throwIfNotFound: true);
+        m_KeybordMause_ChangeMode = m_KeybordMause.FindAction("ChangeMode", throwIfNotFound: true);
+        m_KeybordMause_Interact = m_KeybordMause.FindAction("Interact", throwIfNotFound: true);
+        m_KeybordMause_MovementSphere = m_KeybordMause.FindAction("MovementSphere", throwIfNotFound: true);
+        m_KeybordMause_ChangeModul = m_KeybordMause.FindAction("ChangeModul", throwIfNotFound: true);
+        m_KeybordMause_DopInteract = m_KeybordMause.FindAction("DopInteract", throwIfNotFound: true);
+        m_KeybordMause_EndGame = m_KeybordMause.FindAction("EndGame", throwIfNotFound: true);
+        m_KeybordMause_ShowInfoHint = m_KeybordMause.FindAction("ShowInfoHint", throwIfNotFound: true);
+        // Gamepade
+        m_Gamepade = asset.FindActionMap("Gamepade", throwIfNotFound: true);
+        m_Gamepade_Movement = m_Gamepade.FindAction("Movement", throwIfNotFound: true);
+        m_Gamepade_Look = m_Gamepade.FindAction("Look", throwIfNotFound: true);
+        m_Gamepade_ChangeMode = m_Gamepade.FindAction("ChangeMode", throwIfNotFound: true);
+        m_Gamepade_Interact = m_Gamepade.FindAction("Interact", throwIfNotFound: true);
+        m_Gamepade_MovementSphere = m_Gamepade.FindAction("MovementSphere", throwIfNotFound: true);
+        m_Gamepade_ChangeModul = m_Gamepade.FindAction("ChangeModul", throwIfNotFound: true);
+        m_Gamepade_DopInteract = m_Gamepade.FindAction("DopInteract", throwIfNotFound: true);
+        m_Gamepade_EndGame = m_Gamepade.FindAction("EndGame", throwIfNotFound: true);
     }
 
     ~@PlayerController()
     {
-        UnityEngine.Debug.Assert(!m_Gamplay.enabled, "This will cause a leak and performance issues, PlayerController.Gamplay.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_KeybordMause.enabled, "This will cause a leak and performance issues, PlayerController.KeybordMause.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Gamepade.enabled, "This will cause a leak and performance issues, PlayerController.Gamepade.Disable() has not been called.");
     }
 
     /// <summary>
@@ -412,64 +700,69 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Gamplay
-    private readonly InputActionMap m_Gamplay;
-    private List<IGamplayActions> m_GamplayActionsCallbackInterfaces = new List<IGamplayActions>();
-    private readonly InputAction m_Gamplay_MovementStandart;
-    private readonly InputAction m_Gamplay_Look;
-    private readonly InputAction m_Gamplay_ChangeMode;
-    private readonly InputAction m_Gamplay_Interact;
-    private readonly InputAction m_Gamplay_MovementSphere;
-    private readonly InputAction m_Gamplay_ChangeModul;
-    private readonly InputAction m_Gamplay_DopInteract;
-    private readonly InputAction m_Gamplay_EndGame;
+    // KeybordMause
+    private readonly InputActionMap m_KeybordMause;
+    private List<IKeybordMauseActions> m_KeybordMauseActionsCallbackInterfaces = new List<IKeybordMauseActions>();
+    private readonly InputAction m_KeybordMause_MovementStandart;
+    private readonly InputAction m_KeybordMause_Look;
+    private readonly InputAction m_KeybordMause_ChangeMode;
+    private readonly InputAction m_KeybordMause_Interact;
+    private readonly InputAction m_KeybordMause_MovementSphere;
+    private readonly InputAction m_KeybordMause_ChangeModul;
+    private readonly InputAction m_KeybordMause_DopInteract;
+    private readonly InputAction m_KeybordMause_EndGame;
+    private readonly InputAction m_KeybordMause_ShowInfoHint;
     /// <summary>
-    /// Provides access to input actions defined in input action map "Gamplay".
+    /// Provides access to input actions defined in input action map "KeybordMause".
     /// </summary>
-    public struct GamplayActions
+    public struct KeybordMauseActions
     {
         private @PlayerController m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public GamplayActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
+        public KeybordMauseActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Gamplay/MovementStandart".
+        /// Provides access to the underlying input action "KeybordMause/MovementStandart".
         /// </summary>
-        public InputAction @MovementStandart => m_Wrapper.m_Gamplay_MovementStandart;
+        public InputAction @MovementStandart => m_Wrapper.m_KeybordMause_MovementStandart;
         /// <summary>
-        /// Provides access to the underlying input action "Gamplay/Look".
+        /// Provides access to the underlying input action "KeybordMause/Look".
         /// </summary>
-        public InputAction @Look => m_Wrapper.m_Gamplay_Look;
+        public InputAction @Look => m_Wrapper.m_KeybordMause_Look;
         /// <summary>
-        /// Provides access to the underlying input action "Gamplay/ChangeMode".
+        /// Provides access to the underlying input action "KeybordMause/ChangeMode".
         /// </summary>
-        public InputAction @ChangeMode => m_Wrapper.m_Gamplay_ChangeMode;
+        public InputAction @ChangeMode => m_Wrapper.m_KeybordMause_ChangeMode;
         /// <summary>
-        /// Provides access to the underlying input action "Gamplay/Interact".
+        /// Provides access to the underlying input action "KeybordMause/Interact".
         /// </summary>
-        public InputAction @Interact => m_Wrapper.m_Gamplay_Interact;
+        public InputAction @Interact => m_Wrapper.m_KeybordMause_Interact;
         /// <summary>
-        /// Provides access to the underlying input action "Gamplay/MovementSphere".
+        /// Provides access to the underlying input action "KeybordMause/MovementSphere".
         /// </summary>
-        public InputAction @MovementSphere => m_Wrapper.m_Gamplay_MovementSphere;
+        public InputAction @MovementSphere => m_Wrapper.m_KeybordMause_MovementSphere;
         /// <summary>
-        /// Provides access to the underlying input action "Gamplay/ChangeModul".
+        /// Provides access to the underlying input action "KeybordMause/ChangeModul".
         /// </summary>
-        public InputAction @ChangeModul => m_Wrapper.m_Gamplay_ChangeModul;
+        public InputAction @ChangeModul => m_Wrapper.m_KeybordMause_ChangeModul;
         /// <summary>
-        /// Provides access to the underlying input action "Gamplay/DopInteract".
+        /// Provides access to the underlying input action "KeybordMause/DopInteract".
         /// </summary>
-        public InputAction @DopInteract => m_Wrapper.m_Gamplay_DopInteract;
+        public InputAction @DopInteract => m_Wrapper.m_KeybordMause_DopInteract;
         /// <summary>
-        /// Provides access to the underlying input action "Gamplay/EndGame".
+        /// Provides access to the underlying input action "KeybordMause/EndGame".
         /// </summary>
-        public InputAction @EndGame => m_Wrapper.m_Gamplay_EndGame;
+        public InputAction @EndGame => m_Wrapper.m_KeybordMause_EndGame;
+        /// <summary>
+        /// Provides access to the underlying input action "KeybordMause/ShowInfoHint".
+        /// </summary>
+        public InputAction @ShowInfoHint => m_Wrapper.m_KeybordMause_ShowInfoHint;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_Gamplay; }
+        public InputActionMap Get() { return m_Wrapper.m_KeybordMause; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -477,9 +770,9 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="GamplayActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="KeybordMauseActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(GamplayActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(KeybordMauseActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -487,14 +780,193 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="GamplayActions" />
-        public void AddCallbacks(IGamplayActions instance)
+        /// <seealso cref="KeybordMauseActions" />
+        public void AddCallbacks(IKeybordMauseActions instance)
         {
-            if (instance == null || m_Wrapper.m_GamplayActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_GamplayActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_KeybordMauseActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_KeybordMauseActionsCallbackInterfaces.Add(instance);
             @MovementStandart.started += instance.OnMovementStandart;
             @MovementStandart.performed += instance.OnMovementStandart;
             @MovementStandart.canceled += instance.OnMovementStandart;
+            @Look.started += instance.OnLook;
+            @Look.performed += instance.OnLook;
+            @Look.canceled += instance.OnLook;
+            @ChangeMode.started += instance.OnChangeMode;
+            @ChangeMode.performed += instance.OnChangeMode;
+            @ChangeMode.canceled += instance.OnChangeMode;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @MovementSphere.started += instance.OnMovementSphere;
+            @MovementSphere.performed += instance.OnMovementSphere;
+            @MovementSphere.canceled += instance.OnMovementSphere;
+            @ChangeModul.started += instance.OnChangeModul;
+            @ChangeModul.performed += instance.OnChangeModul;
+            @ChangeModul.canceled += instance.OnChangeModul;
+            @DopInteract.started += instance.OnDopInteract;
+            @DopInteract.performed += instance.OnDopInteract;
+            @DopInteract.canceled += instance.OnDopInteract;
+            @EndGame.started += instance.OnEndGame;
+            @EndGame.performed += instance.OnEndGame;
+            @EndGame.canceled += instance.OnEndGame;
+            @ShowInfoHint.started += instance.OnShowInfoHint;
+            @ShowInfoHint.performed += instance.OnShowInfoHint;
+            @ShowInfoHint.canceled += instance.OnShowInfoHint;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="KeybordMauseActions" />
+        private void UnregisterCallbacks(IKeybordMauseActions instance)
+        {
+            @MovementStandart.started -= instance.OnMovementStandart;
+            @MovementStandart.performed -= instance.OnMovementStandart;
+            @MovementStandart.canceled -= instance.OnMovementStandart;
+            @Look.started -= instance.OnLook;
+            @Look.performed -= instance.OnLook;
+            @Look.canceled -= instance.OnLook;
+            @ChangeMode.started -= instance.OnChangeMode;
+            @ChangeMode.performed -= instance.OnChangeMode;
+            @ChangeMode.canceled -= instance.OnChangeMode;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @MovementSphere.started -= instance.OnMovementSphere;
+            @MovementSphere.performed -= instance.OnMovementSphere;
+            @MovementSphere.canceled -= instance.OnMovementSphere;
+            @ChangeModul.started -= instance.OnChangeModul;
+            @ChangeModul.performed -= instance.OnChangeModul;
+            @ChangeModul.canceled -= instance.OnChangeModul;
+            @DopInteract.started -= instance.OnDopInteract;
+            @DopInteract.performed -= instance.OnDopInteract;
+            @DopInteract.canceled -= instance.OnDopInteract;
+            @EndGame.started -= instance.OnEndGame;
+            @EndGame.performed -= instance.OnEndGame;
+            @EndGame.canceled -= instance.OnEndGame;
+            @ShowInfoHint.started -= instance.OnShowInfoHint;
+            @ShowInfoHint.performed -= instance.OnShowInfoHint;
+            @ShowInfoHint.canceled -= instance.OnShowInfoHint;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="KeybordMauseActions.UnregisterCallbacks(IKeybordMauseActions)" />.
+        /// </summary>
+        /// <seealso cref="KeybordMauseActions.UnregisterCallbacks(IKeybordMauseActions)" />
+        public void RemoveCallbacks(IKeybordMauseActions instance)
+        {
+            if (m_Wrapper.m_KeybordMauseActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="KeybordMauseActions.AddCallbacks(IKeybordMauseActions)" />
+        /// <seealso cref="KeybordMauseActions.RemoveCallbacks(IKeybordMauseActions)" />
+        /// <seealso cref="KeybordMauseActions.UnregisterCallbacks(IKeybordMauseActions)" />
+        public void SetCallbacks(IKeybordMauseActions instance)
+        {
+            foreach (var item in m_Wrapper.m_KeybordMauseActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_KeybordMauseActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="KeybordMauseActions" /> instance referencing this action map.
+    /// </summary>
+    public KeybordMauseActions @KeybordMause => new KeybordMauseActions(this);
+
+    // Gamepade
+    private readonly InputActionMap m_Gamepade;
+    private List<IGamepadeActions> m_GamepadeActionsCallbackInterfaces = new List<IGamepadeActions>();
+    private readonly InputAction m_Gamepade_Movement;
+    private readonly InputAction m_Gamepade_Look;
+    private readonly InputAction m_Gamepade_ChangeMode;
+    private readonly InputAction m_Gamepade_Interact;
+    private readonly InputAction m_Gamepade_MovementSphere;
+    private readonly InputAction m_Gamepade_ChangeModul;
+    private readonly InputAction m_Gamepade_DopInteract;
+    private readonly InputAction m_Gamepade_EndGame;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Gamepade".
+    /// </summary>
+    public struct GamepadeActions
+    {
+        private @PlayerController m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public GamepadeActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Gamepade/Movement".
+        /// </summary>
+        public InputAction @Movement => m_Wrapper.m_Gamepade_Movement;
+        /// <summary>
+        /// Provides access to the underlying input action "Gamepade/Look".
+        /// </summary>
+        public InputAction @Look => m_Wrapper.m_Gamepade_Look;
+        /// <summary>
+        /// Provides access to the underlying input action "Gamepade/ChangeMode".
+        /// </summary>
+        public InputAction @ChangeMode => m_Wrapper.m_Gamepade_ChangeMode;
+        /// <summary>
+        /// Provides access to the underlying input action "Gamepade/Interact".
+        /// </summary>
+        public InputAction @Interact => m_Wrapper.m_Gamepade_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "Gamepade/MovementSphere".
+        /// </summary>
+        public InputAction @MovementSphere => m_Wrapper.m_Gamepade_MovementSphere;
+        /// <summary>
+        /// Provides access to the underlying input action "Gamepade/ChangeModul".
+        /// </summary>
+        public InputAction @ChangeModul => m_Wrapper.m_Gamepade_ChangeModul;
+        /// <summary>
+        /// Provides access to the underlying input action "Gamepade/DopInteract".
+        /// </summary>
+        public InputAction @DopInteract => m_Wrapper.m_Gamepade_DopInteract;
+        /// <summary>
+        /// Provides access to the underlying input action "Gamepade/EndGame".
+        /// </summary>
+        public InputAction @EndGame => m_Wrapper.m_Gamepade_EndGame;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Gamepade; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="GamepadeActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(GamepadeActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="GamepadeActions" />
+        public void AddCallbacks(IGamepadeActions instance)
+        {
+            if (instance == null || m_Wrapper.m_GamepadeActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GamepadeActionsCallbackInterfaces.Add(instance);
+            @Movement.started += instance.OnMovement;
+            @Movement.performed += instance.OnMovement;
+            @Movement.canceled += instance.OnMovement;
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
@@ -524,12 +996,12 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="GamplayActions" />
-        private void UnregisterCallbacks(IGamplayActions instance)
+        /// <seealso cref="GamepadeActions" />
+        private void UnregisterCallbacks(IGamepadeActions instance)
         {
-            @MovementStandart.started -= instance.OnMovementStandart;
-            @MovementStandart.performed -= instance.OnMovementStandart;
-            @MovementStandart.canceled -= instance.OnMovementStandart;
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
@@ -554,12 +1026,12 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="GamplayActions.UnregisterCallbacks(IGamplayActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="GamepadeActions.UnregisterCallbacks(IGamepadeActions)" />.
         /// </summary>
-        /// <seealso cref="GamplayActions.UnregisterCallbacks(IGamplayActions)" />
-        public void RemoveCallbacks(IGamplayActions instance)
+        /// <seealso cref="GamepadeActions.UnregisterCallbacks(IGamepadeActions)" />
+        public void RemoveCallbacks(IGamepadeActions instance)
         {
-            if (m_Wrapper.m_GamplayActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_GamepadeActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -569,27 +1041,27 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="GamplayActions.AddCallbacks(IGamplayActions)" />
-        /// <seealso cref="GamplayActions.RemoveCallbacks(IGamplayActions)" />
-        /// <seealso cref="GamplayActions.UnregisterCallbacks(IGamplayActions)" />
-        public void SetCallbacks(IGamplayActions instance)
+        /// <seealso cref="GamepadeActions.AddCallbacks(IGamepadeActions)" />
+        /// <seealso cref="GamepadeActions.RemoveCallbacks(IGamepadeActions)" />
+        /// <seealso cref="GamepadeActions.UnregisterCallbacks(IGamepadeActions)" />
+        public void SetCallbacks(IGamepadeActions instance)
         {
-            foreach (var item in m_Wrapper.m_GamplayActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_GamepadeActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_GamplayActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_GamepadeActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="GamplayActions" /> instance referencing this action map.
+    /// Provides a new <see cref="GamepadeActions" /> instance referencing this action map.
     /// </summary>
-    public GamplayActions @Gamplay => new GamplayActions(this);
+    public GamepadeActions @Gamepade => new GamepadeActions(this);
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Gamplay" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "KeybordMause" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="GamplayActions.AddCallbacks(IGamplayActions)" />
-    /// <seealso cref="GamplayActions.RemoveCallbacks(IGamplayActions)" />
-    public interface IGamplayActions
+    /// <seealso cref="KeybordMauseActions.AddCallbacks(IKeybordMauseActions)" />
+    /// <seealso cref="KeybordMauseActions.RemoveCallbacks(IKeybordMauseActions)" />
+    public interface IKeybordMauseActions
     {
         /// <summary>
         /// Method invoked when associated input action "MovementStandart" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
@@ -598,6 +1070,77 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMovementStandart(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Look" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLook(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ChangeMode" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChangeMode(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MovementSphere" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMovementSphere(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ChangeModul" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChangeModul(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "DopInteract" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDopInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "EndGame" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEndGame(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ShowInfoHint" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnShowInfoHint(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Gamepade" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="GamepadeActions.AddCallbacks(IGamepadeActions)" />
+    /// <seealso cref="GamepadeActions.RemoveCallbacks(IGamepadeActions)" />
+    public interface IGamepadeActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Movement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMovement(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Look" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

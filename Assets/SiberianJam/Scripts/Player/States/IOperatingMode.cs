@@ -2,9 +2,9 @@ using UnityEngine;
 
 public interface IOperatingMode 
 {
-    public void Move(Vector2 direction);
+    public void Move(Vector3 direction);
 
-    public void Rotate(Vector2 look);
+    public void Rotate(Vector3 look);
 
     public void SetCharacterController(CharacterController charactercontroller);
 

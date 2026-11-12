@@ -4,7 +4,6 @@ public class SphereMode : MonoBehaviour, IOperatingMode
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _speedRotation;
-    [SerializeField] private float _maxDistance;
     [SerializeField] private float _smoothnesMovement;
     [SerializeField] private Animator _mainAnimator;
     [SerializeField] private float _gravityForce;
@@ -50,10 +49,10 @@ public class SphereMode : MonoBehaviour, IOperatingMode
 
         _characterController.Move(pos);
     }
-    public void Move(Vector2 direction)
+    public void Move(Vector3 direction)
     {
-        float distance = Vector3.Distance(_characterController.transform.position, _mausePosition);
-        float speed = (_speed / _maxDistance) * distance;
+        float speed = _speed * direction.z;
+               
         int kof = direction.y <= 0 ? 0 : 1;
 
         _mainAnimator.SetFloat("Speed", (speed / _speed) * kof);
@@ -63,20 +62,9 @@ public class SphereMode : MonoBehaviour, IOperatingMode
         _targetPos = animatePos * speed * Time.deltaTime;
     }
 
-    public void Rotate(Vector2 look)
-    {
-        if (_camera == null) return;
-
-        Plane playerPlane = new Plane(Vector3.up, _characterController.transform.position);
-        Ray ray = _camera.ScreenPointToRay(look);
-        if (!playerPlane.Raycast(ray, out var hitDistance))
-        {
-            _mausePosition = Vector3.zero;
-            return;
-        }
-
-        _mausePosition = ray.GetPoint(hitDistance);
-        _characterController.transform.forward = ray.GetPoint(hitDistance) - _characterController.transform.position;
+    public void Rotate(Vector3 look)
+    {       
+        _characterController.transform.forward = look - _characterController.transform.position;
     }
 
     public void SetCamera(Camera camera)
